@@ -1,1519 +1,1899 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Readmith Demo Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Readmith Demo Gaming</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
+  -webkit-tap-highlight-color:transparent;
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#070b16;
-  color:#fff
+  font-family:Arial,Helvetica,sans-serif;
+  background:#090b12;
+  color:#fff;
+  min-height:100vh;
+  padding-bottom:78px;
 }
 
 button{
-  font:inherit;
+  font-family:inherit;
   border:0;
-  cursor:pointer
+  cursor:pointer;
 }
 
-.app{
-  max-width:480px;
-  min-height:100vh;
-  margin:auto;
-  background:
-    radial-gradient(circle at 50% -10%,#293d7b,#10172b 34%,#070b16 75%);
-  padding-bottom:82px
-}
+.hidden{display:none!important}
 
+/* HEADER */
 .header{
-  height:64px;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
+  height:64px;
+  background:#11141d;
+  border-bottom:1px solid #272b38;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 15px;
-  background:rgba(7,11,22,.94);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #202943
+  padding:0 13px;
 }
 
 .logo{
   font-size:22px;
   font-weight:900;
-  letter-spacing:2px
+  letter-spacing:2px;
 }
 
 .logo span{
-  color:#ffd43b
+  color:#f6c343;
 }
 
-.header button{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:#18213a;
-  color:#fff
-}
-
-.page{
-  display:none;
-  padding:16px
-}
-
-.page.active{
-  display:block
-}
-
-.notice{
-  padding:10px 13px;
-  border-radius:12px;
-  background:#332b12;
-  color:#ffe88a;
-  font-size:11px;
-  margin-bottom:15px
-}
-
-.hero{
-  padding:22px 18px;
-  border-radius:22px;
-  background:linear-gradient(120deg,#6530e7,#2757d9 58%,#0fa7c7);
-  margin-bottom:16px
-}
-
-.hero h1{
-  font-size:28px
-}
-
-.hero p{
-  color:#e4eaff;
-  font-size:13px;
-  line-height:1.5;
-  margin-top:7px
-}
-
-.btn{
-  width:100%;
-  padding:13px;
-  border-radius:13px;
-  background:linear-gradient(135deg,#6c3cf0,#3477ed);
-  color:#fff;
-  font-weight:800;
-  margin-top:12px
-}
-
-.btn.gold{
-  background:#ffd43b;
-  color:#17120a
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:9px;
 }
 
 .balance{
-  padding:18px;
+  background:#1c202b;
+  border:1px solid #343948;
   border-radius:20px;
-  background:#131c34;
-  border:1px solid #27314b;
-  margin-bottom:18px
+  padding:8px 12px;
+  font-size:13px;
+  color:#ffd85c;
+  font-weight:bold;
 }
 
-.label{
-  color:#9ca8c3;
-  font-size:12px
-}
-
-.money{
-  font-size:30px;
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f7c84b,#e88722);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#171717;
   font-weight:900;
-  margin-top:4px
 }
 
+/* PAGES */
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* HERO */
+.hero{
+  margin:12px;
+  height:155px;
+  border-radius:17px;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(circle at 75% 30%,rgba(255,211,67,.45),transparent 25%),
+    linear-gradient(125deg,#151a2a,#3b1d22 50%,#10141e);
+  border:1px solid #353948;
+}
+
+.hero-content{
+  position:absolute;
+  left:20px;
+  top:25px;
+  z-index:2;
+}
+
+.hero-small{
+  color:#f7c84b;
+  font-size:11px;
+  text-transform:uppercase;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-size:27px;
+  margin:7px 0;
+}
+
+.hero p{
+  color:#c3c6cf;
+  font-size:12px;
+}
+
+.hero-btn{
+  margin-top:13px;
+  background:#f4c344;
+  color:#171717;
+  padding:9px 18px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+.hero-decoration{
+  position:absolute;
+  right:-15px;
+  bottom:-25px;
+  font-size:120px;
+  opacity:.18;
+}
+
+/* QUICK MENU */
+.quick{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  padding:3px 12px 12px;
+}
+
+.quick::-webkit-scrollbar{
+  display:none;
+}
+
+.quick-item{
+  min-width:76px;
+  padding:10px 6px;
+  background:#141720;
+  border:1px solid #292e3b;
+  border-radius:12px;
+  text-align:center;
+  color:#c8cad0;
+  font-size:11px;
+}
+
+.quick-icon{
+  font-size:22px;
+  margin-bottom:5px;
+}
+
+/* SECTION */
 .section{
+  padding:7px 12px;
+}
+
+.section-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:18px 0 11px
+  margin-bottom:11px;
 }
 
-.section h2{
-  font-size:18px
+.section-title h2{
+  font-size:18px;
 }
 
-.section span{
+.section-title span{
+  color:#8f94a2;
   font-size:11px;
-  color:#8793ad
 }
 
+/* PROVIDERS */
+.providers{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:4px;
+}
+
+.providers::-webkit-scrollbar{
+  display:none;
+}
+
+.provider{
+  min-width:82px;
+  padding:9px 10px;
+  border-radius:9px;
+  background:#151821;
+  border:1px solid #2b303d;
+  color:#aeb2bc;
+  font-size:11px;
+  text-align:center;
+}
+
+.provider.active{
+  background:linear-gradient(135deg,#f4c746,#d99020);
+  color:#171717;
+  border-color:#f5c849;
+  font-weight:bold;
+}
+
+/* GAMES */
 .games{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.game{
+.game-card{
+  background:#141720;
+  border:1px solid #292e3b;
+  border-radius:13px;
   overflow:hidden;
-  border-radius:18px;
-  background:#151e35;
-  border:1px solid #26304a
-}
-
-.art{
-  height:105px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:48px
-}
-
-.g1{
-  background:linear-gradient(135deg,#5723d9,#c82cff)
-}
-
-.g2{
-  background:linear-gradient(135deg,#087b9d,#19cbaa)
-}
-
-.g3{
-  background:linear-gradient(135deg,#e65b22,#f0b62d)
-}
-
-.g4{
-  background:linear-gradient(135deg,#b6225c,#ff557e)
-}
-
-.g5{
-  background:linear-gradient(135deg,#2b5bbd,#35c5e9)
-}
-
-.g6{
-  background:linear-gradient(135deg,#6841d9,#e84bca)
-}
-
-.ginfo{
-  padding:10px
-}
-
-.gname{
-  font-size:13px;
-  font-weight:800
-}
-
-.gtag{
-  font-size:10px;
-  color:#8490aa;
-  margin-top:3px
-}
-
-.game-page{
-  text-align:center
-}
-
-.game-page h1{
-  font-size:24px
-}
-
-.game-page .sub{
-  color:#8d99b3;
-  font-size:12px;
-  margin-top:5px
-}
-
-.gamebox{
-  margin-top:18px;
-  padding:20px;
-  border-radius:22px;
-  background:#121a30;
-  border:1px solid #27314b
-}
-
-.wheel{
-  width:235px;
-  height:235px;
-  margin:8px auto 18px;
-  border-radius:50%;
-  border:8px solid #ffd43b;
-  background:
-    conic-gradient(
-      #7b36e9 0 45deg,
-      #20a6d4 45deg 90deg,
-      #e84c7b 90deg 135deg,
-      #f0a72c 135deg 180deg,
-      #31b86c 180deg 225deg,
-      #7b36e9 225deg 270deg,
-      #20a6d4 270deg 315deg,
-      #e84c7b 315deg 360deg
-    );
   position:relative;
-  transition:transform 3s cubic-bezier(.12,.75,.15,1);
-  box-shadow:0 0 35px #000
+  transition:.15s;
 }
 
-.wheel:after{
-  content:"DEMO";
+.game-card:active{
+  transform:scale(.97);
+}
+
+.game-thumb{
+  height:125px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.game-thumb:after{
+  content:"";
   position:absolute;
-  inset:78px;
-  border-radius:50%;
-  background:#10172b;
-  border:4px solid #ffd43b;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900
+  inset:0;
+  background:linear-gradient(transparent 45%,rgba(0,0,0,.65));
 }
 
-.pointer{
-  width:0;
-  height:0;
-  border-left:13px solid transparent;
-  border-right:13px solid transparent;
-  border-top:28px solid #fff;
-  margin:-4px auto 10px;
-  filter:drop-shadow(0 2px 3px #000)
+.game-ball{
+  font-size:65px;
+  position:relative;
+  z-index:1;
+  filter:drop-shadow(0 8px 15px rgba(0,0,0,.5));
 }
 
-.chests{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:15px
+.thumb1{
+  background:radial-gradient(circle at 50% 30%,#3f6790,#131b2d 70%);
 }
 
-.chest{
-  height:105px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#5d32d7,#252e61);
-  color:#fff;
-  font-size:38px;
-  border:1px solid #39456d
+.thumb2{
+  background:radial-gradient(circle at 50% 30%,#8d5429,#24140d 70%);
 }
 
-.chest.open{
-  background:#163e42
+.thumb3{
+  background:radial-gradient(circle at 50% 30%,#6653a4,#17152d 70%);
 }
 
-.chest small{
-  display:block;
+.thumb4{
+  background:radial-gradient(circle at 50% 30%,#367b6c,#101e1b 70%);
+}
+
+.thumb5{
+  background:radial-gradient(circle at 50% 30%,#914c58,#251117 70%);
+}
+
+.thumb6{
+  background:radial-gradient(circle at 50% 30%,#536c91,#121925 70%);
+}
+
+.game-info{
+  padding:9px 10px 11px;
+}
+
+.game-name{
+  font-size:13px;
+  font-weight:bold;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.game-provider{
+  margin-top:4px;
   font-size:10px;
-  color:#b8c4de
+  color:#858a97;
 }
 
-.tap-area{
-  height:220px;
-  border-radius:20px;
+.play-label{
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  z-index:4;
+  background:#f4c344;
+  color:#151515;
+  padding:4px 7px;
+  border-radius:6px;
+  font-size:9px;
+  font-weight:bold;
+}
+
+/* PROMO */
+.promo-list{
+  display:grid;
+  gap:11px;
+  padding:12px;
+}
+
+.promo-card{
+  padding:18px;
+  border-radius:15px;
+  border:1px solid #303544;
+  background:linear-gradient(135deg,#191d29,#11131a);
+}
+
+.promo-card h3{
+  color:#f5c849;
+  margin-bottom:6px;
+}
+
+.promo-card p{
+  color:#aeb2bc;
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* GAME SCREEN */
+.game-screen{
+  min-height:calc(100vh - 64px);
+  background:#06080d;
+}
+
+.game-top{
+  height:58px;
+  background:#11141d;
+  border-bottom:1px solid #282c37;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 12px;
+}
+
+.back{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#20242f;
+  color:white;
+  font-size:20px;
+}
+
+.game-title{
+  font-size:15px;
+  font-weight:bold;
+}
+
+.demo-tag{
+  font-size:9px;
+  color:#f5c849;
+  border:1px solid #6e5921;
+  padding:5px 7px;
+  border-radius:8px;
+}
+
+.game-area{
+  min-height:calc(100vh - 122px);
+  padding:14px 10px;
   background:
-    radial-gradient(circle,#3b2c88,#151d39);
+    radial-gradient(circle at 50% 20%,rgba(48,78,118,.3),transparent 30%),
+    #070a10;
+}
+
+/* LOADING */
+.loading{
+  min-height:500px;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-top:15px
+  flex-direction:column;
 }
 
-.star{
-  font-size:100px;
-  transition:.15s
+.loader-ball{
+  font-size:75px;
+  animation:float 1s infinite alternate;
 }
 
-.star:active{
-  transform:scale(.8)
+@keyframes float{
+  from{transform:translateY(0)}
+  to{transform:translateY(-18px)}
 }
 
-.candy-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-top:15px
+.loading h2{
+  margin-top:15px;
+  font-size:20px;
 }
 
-.candy{
-  height:64px;
-  border-radius:14px;
-  background:#202b4a;
-  font-size:30px
+.loading p{
+  color:#888e9b;
+  margin-top:7px;
+  font-size:12px;
 }
 
-.candy.done{
-  opacity:.35
+/* FOOTBALL GAME */
+.football-game{
+  max-width:520px;
+  margin:auto;
 }
 
-.result{
-  min-height:23px;
-  margin-top:13px;
-  color:#ffd43b;
-  font-weight:800
-}
-
-.nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:480px;
-  height:70px;
-  display:flex;
-  background:rgba(7,11,22,.97);
-  border-top:1px solid #222c46;
-  z-index:50
-}
-
-.nav button{
-  flex:1;
-  background:transparent;
-  color:#697691;
-  font-size:10px
-}
-
-.nav b{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px
-}
-
-.nav button.active{
-  color:#ffd43b
-}
-
-.ref{
-  padding:18px;
-  border-radius:20px;
-  background:#17213b;
-  border:1px solid #2b3652
-}
-
-.refcode{
-  padding:13px;
-  margin-top:12px;
-  background:#090e1c;
-  border-radius:12px;
-  color:#ffd43b;
-  text-align:center;
-  font-weight:800;
-  word-break:break-all
-}
-
-.tx{
+.scorebar{
   display:flex;
   justify-content:space-between;
-  padding:13px 0;
-  border-bottom:1px solid #222c43;
-  font-size:12px
+  align-items:center;
+  background:#111720;
+  border:1px solid #29313d;
+  border-radius:13px;
+  padding:11px 13px;
+  margin-bottom:12px;
 }
 
-.tx small{
-  display:block;
-  color:#71809d;
-  margin-top:3px
+.team{
+  font-size:11px;
+  color:#aeb3bd;
 }
 
-.plus{
-  color:#6ee7a5;
-  font-weight:800
+.score{
+  font-size:21px;
+  font-weight:900;
+  color:#f5c849;
 }
 
-.modal{
-  display:none;
+.pitch{
+  height:335px;
+  border-radius:17px;
+  position:relative;
+  overflow:hidden;
+  border:2px solid #324c3b;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #163b29 0px,
+      #163b29 48px,
+      #19452f 48px,
+      #19452f 96px
+    );
+}
+
+.pitch-line{
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:rgba(255,255,255,.28);
+  transform:translateX(-50%);
+}
+
+.center-circle{
+  position:absolute;
+  width:95px;
+  height:95px;
+  border:2px solid rgba(255,255,255,.28);
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.goal{
+  position:absolute;
+  width:55px;
+  height:115px;
+  border:3px solid rgba(255,255,255,.55);
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.goal.left{
+  left:-3px;
+  border-left:0;
+}
+
+.goal.right{
+  right:-3px;
+  border-right:0;
+}
+
+.football{
+  position:absolute;
+  left:50%;
+  top:50%;
+  font-size:55px;
+  transform:translate(-50%,-50%);
+  filter:drop-shadow(0 8px 8px rgba(0,0,0,.45));
+}
+
+.football.kick{
+  animation:kick 1.1s ease-in-out;
+}
+
+@keyframes kick{
+  0%{left:50%;top:50%;transform:translate(-50%,-50%) rotate(0)}
+  45%{left:75%;top:42%;transform:translate(-50%,-50%) rotate(180deg)}
+  100%{left:93%;top:50%;transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+.controls{
+  background:#11151e;
+  border:1px solid #2b303c;
+  margin-top:12px;
+  border-radius:15px;
+  padding:13px;
+}
+
+.amount-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.amount-box{
+  flex:1;
+  height:43px;
+  background:#202530;
+  border:1px solid #363c49;
+  border-radius:9px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f4c746;
+  font-weight:bold;
+}
+
+.small-btn{
+  width:43px;
+  height:43px;
+  border-radius:9px;
+  background:#272c37;
+  color:white;
+  font-size:19px;
+}
+
+.play-game{
+  width:100%;
+  height:50px;
+  margin-top:11px;
+  border-radius:11px;
+  background:linear-gradient(135deg,#f7d25b,#d99a23);
+  color:#171717;
+  font-weight:900;
+  font-size:16px;
+}
+
+.game-message{
+  min-height:30px;
+  margin-top:10px;
+  text-align:center;
+  color:#adb2be;
+  font-size:12px;
+}
+
+.win{
   position:fixed;
   inset:0;
-  background:#000b;
-  z-index:100;
-  align-items:flex-end
+  z-index:300;
+  background:rgba(0,0,0,.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
-.modal.show{
-  display:flex
-}
-
-.modalbox{
+.win-box{
   width:100%;
-  max-width:480px;
-  margin:auto auto 0;
-  background:#11192e;
-  border-radius:23px 23px 0 0;
-  padding:22px
+  max-width:350px;
+  background:linear-gradient(160deg,#191d27,#0d1017);
+  border:2px solid #e7b838;
+  border-radius:22px;
+  padding:28px 20px;
+  text-align:center;
+  animation:pop .35s ease-out;
 }
 
-.close{
-  float:right;
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  background:#202a44;
-  color:#fff
+@keyframes pop{
+  from{transform:scale(.5);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:88px;
-  transform:translateX(-50%);
-  background:#fff;
-  color:#111;
-  padding:10px 15px;
-  border-radius:12px;
+.win-star{
+  font-size:62px;
+}
+
+.win-box h1{
+  color:#f6ca48;
+  font-size:31px;
+  margin:8px 0;
+}
+
+.win-amount{
+  font-size:25px;
+  font-weight:900;
+}
+
+.win-box p{
+  color:#aeb3bd;
+  margin:8px 0 18px;
   font-size:12px;
-  opacity:0;
-  z-index:200;
-  transition:.2s
 }
 
-.toast.show{
-  opacity:1
+.close-win{
+  width:100%;
+  height:45px;
+  background:#f4c344;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* MINE */
+.mine{
+  padding:15px 12px;
+}
+
+.profile-card{
+  background:linear-gradient(135deg,#191d27,#11131a);
+  border:1px solid #303543;
+  border-radius:17px;
+  padding:20px;
+  text-align:center;
+}
+
+.big-avatar{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#f5cc4d,#dc8e20);
+  color:#171717;
+  font-size:25px;
+  font-weight:900;
+}
+
+.profile-card h2{
+  margin-top:10px;
+}
+
+.profile-card p{
+  color:#8e94a0;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:14px;
+}
+
+.stat{
+  background:#151923;
+  border:1px solid #2a2f3a;
+  border-radius:10px;
+  padding:12px 5px;
+}
+
+.stat strong{
+  display:block;
+  color:#f4c746;
+  font-size:16px;
+}
+
+.stat span{
+  color:#888e99;
+  font-size:9px;
+}
+
+/* REFERRAL */
+.refbox{
+  margin:12px;
+  padding:20px;
+  background:#151922;
+  border:1px solid #2d323f;
+  border-radius:16px;
+}
+
+.refbox h2{
+  margin-bottom:8px;
+}
+
+.refbox p{
+  color:#969ca8;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.ref-code{
+  margin-top:15px;
+  background:#0d1017;
+  border:1px dashed #6c5a27;
+  padding:12px;
+  border-radius:9px;
+  text-align:center;
+  color:#f5c849;
+  font-weight:bold;
+}
+
+.copy{
+  width:100%;
+  margin-top:10px;
+  height:44px;
+  background:#f4c344;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+/* TRANSACTIONS */
+.tx{
+  margin:12px;
+}
+
+.tx-item{
+  display:flex;
+  justify-content:space-between;
+  padding:13px 2px;
+  border-bottom:1px solid #242934;
+}
+
+.tx-name{
+  font-size:12px;
+}
+
+.tx-date{
+  color:#777d88;
+  font-size:9px;
+  margin-top:3px;
+}
+
+.tx-amount{
+  color:#f5c849;
+  font-weight:bold;
+  font-size:12px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:200;
+  height:70px;
+  background:#10131b;
+  border-top:1px solid #292e39;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+
+.nav-btn{
+  background:transparent;
+  color:#777d89;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  font-size:9px;
+}
+
+.nav-btn .nav-icon{
+  font-size:21px;
+}
+
+.nav-btn.active{
+  color:#f5c849;
+}
+
+.nav-btn.active .nav-icon{
+  transform:translateY(-1px);
+}
+
+/* DESKTOP */
+@media(min-width:700px){
+  body{
+    max-width:520px;
+    margin:auto;
+    box-shadow:0 0 70px rgba(0,0,0,.5);
+  }
+
+  .header{
+    max-width:520px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+  }
+
+  .bottom-nav{
+    max-width:520px;
+    left:50%;
+    right:auto;
+    width:100%;
+    transform:translateX(-50%);
+  }
+
+  .games{
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
+<!-- HEADER -->
 <header class="header">
+  <div class="logo">READ<span>MITH</span></div>
 
-  <div class="logo">
-    READ<span>MITH</span>
+  <div class="header-right">
+    <div class="balance">💰 <span id="topBalance">100.00</span></div>
+    <div class="avatar">A</div>
   </div>
-
-  <button onclick="showInfo()">ⓘ</button>
-
 </header>
 
 
 <!-- HOME -->
+<main id="home" class="page active">
 
-<section id="home" class="page active">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-small">DEMO GAMING</div>
+      <h1>Play & Win</h1>
+      <p>Enjoy interactive demo games.</p>
+      <button class="hero-btn" onclick="openGame('football')">PLAY NOW</button>
+    </div>
 
-  <div class="notice">
-    ⚡ DEMO MODE — games use fictional points only.
+    <div class="hero-decoration">⚽</div>
+  </section>
+
+
+  <div class="quick">
+    <div class="quick-item" onclick="showPage('home')">
+      <div class="quick-icon">🔥</div>
+      Popular
+    </div>
+
+    <div class="quick-item" onclick="showPage('games')">
+      <div class="quick-icon">🎮</div>
+      Games
+    </div>
+
+    <div class="quick-item" onclick="showPage('promo')">
+      <div class="quick-icon">🎁</div>
+      Bonus
+    </div>
+
+    <div class="quick-item" onclick="showPage('invite')">
+      <div class="quick-icon">👥</div>
+      Invite
+    </div>
+
+    <div class="quick-item" onclick="showPage('mine')">
+      <div class="quick-icon">👤</div>
+      Mine
+    </div>
   </div>
 
-  <div class="hero">
 
-    <h1>Play & Explore</h1>
+  <section class="section">
+    <div class="section-title">
+      <h2>Game Providers</h2>
+      <span>View all</span>
+    </div>
+
+    <div class="providers">
+      <button class="provider active">ALL</button>
+      <button class="provider">JDB</button>
+      <button class="provider">JILI</button>
+      <button class="provider">PG SOFT</button>
+      <button class="provider">SPADE</button>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="section-title">
+      <h2>Popular Games</h2>
+      <span>More ›</span>
+    </div>
+
+    <div class="games">
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb1">
+          <div class="game-ball">⚽</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Super Strike</div>
+          <div class="game-provider">JDB • DEMO</div>
+        </div>
+      </div>
+
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb2">
+          <div class="game-ball">🏆</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Golden Cup</div>
+          <div class="game-provider">JILI • DEMO</div>
+        </div>
+      </div>
+
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb3">
+          <div class="game-ball">🎯</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Lucky Shot</div>
+          <div class="game-provider">PG SOFT • DEMO</div>
+        </div>
+      </div>
+
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb4">
+          <div class="game-ball">💎</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Diamond Rush</div>
+          <div class="game-provider">JDB • DEMO</div>
+        </div>
+      </div>
+
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb5">
+          <div class="game-ball">🔥</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Fire Football</div>
+          <div class="game-provider">JILI • DEMO</div>
+        </div>
+      </div>
+
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb6">
+          <div class="game-ball">⭐</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Star Arena</div>
+          <div class="game-provider">SPADE • DEMO</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- GAMES PAGE -->
+<main id="games" class="page">
+
+  <section class="section" style="padding-top:18px">
+
+    <div class="section-title">
+      <h2>All Games</h2>
+      <span>Demo only</span>
+    </div>
+
+    <div class="providers">
+      <button class="provider active">ALL</button>
+      <button class="provider">JDB</button>
+      <button class="provider">JILI</button>
+      <button class="provider">PG SOFT</button>
+      <button class="provider">SPADE</button>
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <div class="games">
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb1">
+          <div class="game-ball">⚽</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Super Strike</div>
+          <div class="game-provider">JDB • DEMO</div>
+        </div>
+      </div>
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb2">
+          <div class="game-ball">🏆</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Golden Cup</div>
+          <div class="game-provider">JILI • DEMO</div>
+        </div>
+      </div>
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb3">
+          <div class="game-ball">🎯</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Lucky Shot</div>
+          <div class="game-provider">PG SOFT • DEMO</div>
+        </div>
+      </div>
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb4">
+          <div class="game-ball">💎</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Diamond Rush</div>
+          <div class="game-provider">JDB • DEMO</div>
+        </div>
+      </div>
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb5">
+          <div class="game-ball">🔥</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Fire Football</div>
+          <div class="game-provider">JILI • DEMO</div>
+        </div>
+      </div>
+
+      <div class="game-card" onclick="openGame('football')">
+        <div class="game-thumb thumb6">
+          <div class="game-ball">⭐</div>
+          <div class="play-label">PLAY</div>
+        </div>
+        <div class="game-info">
+          <div class="game-name">Star Arena</div>
+          <div class="game-provider">SPADE • DEMO</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- PROMO -->
+<main id="promo" class="page">
+
+  <div class="promo-list">
+
+    <div class="promo-card">
+      <h3>🎁 Daily Demo Bonus</h3>
+      <p>
+        Claim a fictional demo reward once per day.
+        No real money is involved.
+      </p>
+      <button class="hero-btn" style="margin-top:12px" onclick="dailyBonus()">
+        CLAIM DEMO BONUS
+      </button>
+    </div>
+
+    <div class="promo-card">
+      <h3>🔥 Super Strike Event</h3>
+      <p>
+        Play the football demo game and experience the
+        animated winning sequence.
+      </p>
+      <button class="hero-btn" style="margin-top:12px" onclick="openGame('football')">
+        PLAY GAME
+      </button>
+    </div>
+
+    <div class="promo-card">
+      <h3>⭐ Demo Mode</h3>
+      <p>
+        All credits shown on this website are fictional
+        demo credits and have no cash value.
+      </p>
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- INVITE -->
+<main id="invite" class="page">
+
+  <div class="refbox">
+
+    <h2>Invite Friends</h2>
 
     <p>
-      Interactive mini-games with animations,
-      demo rewards and game history.
+      Share your demo referral code with friends.
+      Referral activity is stored locally in this browser.
     </p>
 
-    <button class="btn gold" onclick="show('games')">
-      Play Games
+    <div class="ref-code" id="refCode">
+      DEMO-258282
+    </div>
+
+    <button class="copy" onclick="copyReferral()">
+      COPY REFERRAL CODE
     </button>
 
   </div>
 
-  <div class="balance">
 
-    <div class="label">
-      Demo Balance
-    </div>
+  <div class="refbox">
 
-    <div class="money">
-      $<span id="balance">100.00</span>
-    </div>
+    <h3 style="margin-bottom:10px">Referral Stats</h3>
 
-  </div>
+    <div class="stats">
 
-  <div class="section">
-    <h2>Featured Games</h2>
-    <span>Demo only</span>
-  </div>
-
-  <div class="games">
-
-    <div class="game" onclick="openGame('wheel')">
-
-      <div class="art g1">🎡</div>
-
-      <div class="ginfo">
-        <div class="gname">Lucky Wheel</div>
-        <div class="gtag">Spin demo</div>
+      <div class="stat">
+        <strong id="refCount">0</strong>
+        <span>REFERRALS</span>
       </div>
 
-    </div>
-
-
-    <div class="game" onclick="openGame('chest')">
-
-      <div class="art g2">💎</div>
-
-      <div class="ginfo">
-        <div class="gname">Treasure Box</div>
-        <div class="gtag">Pick a box</div>
+      <div class="stat">
+        <strong>0.00</strong>
+        <span>DEMO BONUS</span>
       </div>
 
-    </div>
-
-
-    <div class="game" onclick="openGame('star')">
-
-      <div class="art g3">⭐</div>
-
-      <div class="ginfo">
-        <div class="gname">Star Tap</div>
-        <div class="gtag">Tap challenge</div>
-      </div>
-
-    </div>
-
-
-    <div class="game" onclick="openGame('candy')">
-
-      <div class="art g4">🍬</div>
-
-      <div class="ginfo">
-        <div class="gname">Candy Rush</div>
-        <div class="gtag">Tap candies</div>
+      <div class="stat">
+        <strong>ACTIVE</strong>
+        <span>STATUS</span>
       </div>
 
     </div>
 
   </div>
 
-  <button class="btn" onclick="claimBonus()">
-    🎁 Claim Daily Demo Bonus
-  </button>
-
-</section>
+</main>
 
 
-<!-- GAMES -->
+<!-- MINE -->
+<main id="mine" class="page">
 
-<section id="games" class="page">
+  <div class="mine">
 
-  <div class="section">
-    <h2>Games</h2>
-    <span>Playable demo</span>
-  </div>
+    <div class="profile-card">
 
-  <div class="notice">
-    🎮 Tap a game and play it.
-    Rewards are fictional demo credits.
-  </div>
+      <div class="big-avatar">A</div>
 
-  <div class="games">
+      <h2>Afaq</h2>
 
-    <div class="game" onclick="openGame('wheel')">
-      <div class="art g1">🎡</div>
-      <div class="ginfo">
-        <div class="gname">Lucky Wheel</div>
-        <div class="gtag">Spin & win demo points</div>
-      </div>
-    </div>
+      <p>Demo Player</p>
 
-    <div class="game" onclick="openGame('chest')">
-      <div class="art g2">💎</div>
-      <div class="ginfo">
-        <div class="gname">Treasure Box</div>
-        <div class="gtag">Open one box</div>
-      </div>
-    </div>
+      <div class="stats">
 
-    <div class="game" onclick="openGame('star')">
-      <div class="art g3">⭐</div>
-      <div class="ginfo">
-        <div class="gname">Star Tap</div>
-        <div class="gtag">10 tap challenge</div>
-      </div>
-    </div>
-
-    <div class="game" onclick="openGame('candy')">
-      <div class="art g4">🍬</div>
-      <div class="ginfo">
-        <div class="gname">Candy Rush</div>
-        <div class="gtag">Tap challenge</div>
-      </div>
-    </div>
-
-    <div class="game" onclick="openGame('star')">
-      <div class="art g5">🌟</div>
-      <div class="ginfo">
-        <div class="gname">Star Catch</div>
-        <div class="gtag">Tap challenge</div>
-      </div>
-    </div>
-
-    <div class="game" onclick="openGame('candy')">
-      <div class="art g6">🧩</div>
-      <div class="ginfo">
-        <div class="gname">Puzzle Pop</div>
-        <div class="gtag">Demo challenge</div>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PLAY -->
-
-<section id="play" class="page game-page"></section>
-
-
-<!-- REFERRAL -->
-
-<section id="referral" class="page">
-
-  <div class="section">
-    <h2>Invite Friends</h2>
-    <span>Referral</span>
-  </div>
-
-  <div class="ref">
-
-    <h2>👥 Invite & Earn Demo Rewards</h2>
-
-    <p style="color:#929fba;font-size:12px;margin-top:7px;line-height:1.5">
-      Share your referral link to test the demo referral flow.
-    </p>
-
-    <div class="refcode" id="refLink"></div>
-
-    <button class="btn" onclick="copyRef()">
-      Copy Referral Link
-    </button>
-
-    <div style="
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:12px">
-
-      <div class="balance">
-
-        <div class="label">
-          Referrals
+        <div class="stat">
+          <strong id="mineBalance">100.00</strong>
+          <span>BALANCE</span>
         </div>
 
-        <div class="money"
-             style="font-size:22px"
-             id="refs">
-          0
+        <div class="stat">
+          <strong id="gamesPlayed">0</strong>
+          <span>GAMES</span>
         </div>
 
-      </div>
-
-      <div class="balance">
-
-        <div class="label">
-          Demo Reward
-        </div>
-
-        <div class="money"
-             style="font-size:22px">
-          $<span id="refReward">0</span>
+        <div class="stat">
+          <strong>DEMO</strong>
+          <span>ACCOUNT</span>
         </div>
 
       </div>
 
     </div>
 
-  </div>
 
-</section>
+    <div class="refbox" style="margin:14px 0 0">
 
+      <h3 style="margin-bottom:12px">Account</h3>
 
-<!-- WALLET -->
+      <button class="copy" style="margin-top:0;background:#202530;color:white" onclick="showPage('transactions')">
+        📋 Transaction History
+      </button>
 
-<section id="wallet" class="page">
+      <button class="copy" style="background:#202530;color:white" onclick="alert('Settings demo')">
+        ⚙️ Settings
+      </button>
 
-  <div class="section">
-    <h2>Wallet</h2>
-    <span>Demo credits</span>
-  </div>
+      <button class="copy" style="background:#202530;color:white" onclick="resetDemo()">
+        ♻️ Reset Demo Account
+      </button>
 
-  <div class="balance">
-
-    <div class="label">
-      Available Demo Balance
-    </div>
-
-    <div class="money">
-      $<span id="wallet">100.00</span>
     </div>
 
   </div>
 
-  <div class="notice">
-    💡 No deposits or withdrawals are connected.
-    All credits are fictional.
-  </div>
-
-  <div class="section">
-    <h2>Activity</h2>
-  </div>
-
-  <div id="txWallet"></div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section id="profile" class="page">
-
-  <div style="text-align:center;padding:18px 0">
-
-    <div
-      style="
-      width:76px;
-      height:76px;
-      border-radius:50%;
-      margin:auto;
-      background:linear-gradient(135deg,#6944ef,#20b9ee);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-      font-weight:900"
-      id="avatar">
-      A
-    </div>
-
-    <h2 style="margin-top:10px" id="pname">
-      Guest
-    </h2>
-
-    <div
-      style="color:#8490aa;font-size:12px"
-      id="pemail">
-      Demo account
-    </div>
-
-  </div>
-
-  <button class="btn" onclick="show('referral')">
-    👥 Referral Center
-  </button>
-
-  <button class="btn" onclick="show('wallet')">
-    💰 Demo Wallet
-  </button>
-
-  <button class="btn" onclick="showTransactions()">
-    📊 Transactions
-  </button>
-
-  <button class="btn" onclick="logout()">
-    🚪 Logout
-  </button>
-
-</section>
+</main>
 
 
 <!-- TRANSACTIONS -->
+<main id="transactions" class="page">
 
-<section id="transactions" class="page">
-
-  <div class="section">
-    <h2>Transactions</h2>
-    <span>Demo history</span>
+  <div class="section" style="padding-top:18px">
+    <div class="section-title">
+      <h2>Transactions</h2>
+      <span>Demo history</span>
+    </div>
   </div>
 
-  <div id="txList"></div>
+  <div class="tx" id="transactionsList">
+    <div class="tx-item">
+      <div>
+        <div class="tx-name">Demo Starting Balance</div>
+        <div class="tx-date">Today</div>
+      </div>
+      <div class="tx-amount">+100.00</div>
+    </div>
+  </div>
 
-</section>
+</main>
+
+
+<!-- GAME PAGE -->
+<main id="gamePage" class="page">
+
+  <div class="game-screen">
+
+    <div class="game-top">
+
+      <button class="back" onclick="showPage('home')">‹</button>
+
+      <div class="game-title" id="gameTitle">
+        Super Strike
+      </div>
+
+      <div class="demo-tag">
+        DEMO
+      </div>
+
+    </div>
+
+    <div class="game-area" id="gameArea">
+
+      <div class="loading" id="loadingScreen">
+
+        <div class="loader-ball">⚽</div>
+
+        <h2>SUPER STRIKE</h2>
+
+        <p>Loading demo game...</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- WIN POPUP -->
+<div class="win hidden" id="winPopup">
+
+  <div class="win-box">
+
+    <div class="win-star">🏆</div>
+
+    <h1>SUPER STRIKE</h1>
+
+    <div class="win-amount" id="winAmount">
+      +5.00 Demo Credits
+    </div>
+
+    <p>
+      Congratulations! This is a fictional demo reward.
+    </p>
+
+    <button class="close-win" onclick="closeWin()">
+      CONTINUE
+    </button>
+
+  </div>
 
 </div>
 
 
-<!-- NAV -->
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
 
-<nav class="nav">
-
-  <button
-    data-page="home"
-    class="active"
-    onclick="show('home')">
-
-    <b>⌂</b>
-    Home
-
+  <button class="nav-btn active" data-page="home" onclick="showPage('home')">
+    <div class="nav-icon">⌂</div>
+    HOME
   </button>
 
-  <button
-    data-page="games"
-    onclick="show('games')">
-
-    <b>🎮</b>
-    Games
-
+  <button class="nav-btn" data-page="promo" onclick="showPage('promo')">
+    <div class="nav-icon">🎁</div>
+    PROMO
   </button>
 
-  <button
-    data-page="referral"
-    onclick="show('referral')">
-
-    <b>👥</b>
-    Invite
-
+  <button class="nav-btn" data-page="games" onclick="showPage('games')">
+    <div class="nav-icon">🎮</div>
+    GET
   </button>
 
-  <button
-    data-page="wallet"
-    onclick="show('wallet')">
-
-    <b>💰</b>
-    Wallet
-
+  <button class="nav-btn" data-page="invite" onclick="showPage('invite')">
+    <div class="nav-icon">👥</div>
+    EARN
   </button>
 
-  <button
-    data-page="profile"
-    onclick="show('profile')">
-
-    <b>👤</b>
-    Profile
-
+  <button class="nav-btn" data-page="mine" onclick="showPage('mine')">
+    <div class="nav-icon">👤</div>
+    MINE
   </button>
 
 </nav>
 
 
-<!-- MODAL -->
-
-<div class="modal" id="modal">
-
-  <div class="modalbox">
-
-    <button class="close" onclick="closeModal()">
-      ×
-    </button>
-
-    <h2 id="mtitle">
-      Demo
-    </h2>
-
-    <p
-      id="mtext"
-      style="
-      color:#93a0bb;
-      font-size:12px;
-      line-height:1.5;
-      margin-top:9px">
-    </p>
-
-    <button class="btn" onclick="closeModal()">
-      OK
-    </button>
-
-  </div>
-
-</div>
-
-
-<div class="toast" id="toast"></div>
-
-
 <script>
 
-const KEY="readmith_play_demo";
+/* =========================
+   DEMO DATA
+========================= */
 
-let data=
-JSON.parse(localStorage.getItem(KEY)||"null")
-||
-{
-  balance:100,
-  refs:0,
-  refReward:0,
+let balance = Number(localStorage.getItem("demoBalance"));
 
-  transactions:[
-    {
-      name:"Welcome Demo Credit",
-      amount:100,
-      date:new Date().toLocaleDateString()
+if(!Number.isFinite(balance)){
+  balance = 100;
+  localStorage.setItem("demoBalance", balance);
+}
+
+let gamesPlayed = Number(localStorage.getItem("gamesPlayed")) || 0;
+
+let transactions =
+  JSON.parse(localStorage.getItem("demoTransactions") || "[]");
+
+
+/* =========================
+   UPDATE BALANCE
+========================= */
+
+function updateBalance(){
+
+  document.getElementById("topBalance").textContent =
+    balance.toFixed(2);
+
+  document.getElementById("mineBalance").textContent =
+    balance.toFixed(2);
+
+  document.getElementById("gamesPlayed").textContent =
+    gamesPlayed;
+
+  localStorage.setItem("demoBalance", balance);
+  localStorage.setItem("gamesPlayed", gamesPlayed);
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(id){
+
+  document.querySelectorAll(".page").forEach(function(page){
+    page.classList.remove("active");
+  });
+
+  const page = document.getElementById(id);
+
+  if(page){
+    page.classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-btn").forEach(function(btn){
+    btn.classList.toggle(
+      "active",
+      btn.dataset.page === id
+    );
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  updateBalance();
+
+  if(id === "transactions"){
+    renderTransactions();
+  }
+}
+
+
+/* =========================
+   OPEN GAME
+========================= */
+
+function openGame(type){
+
+  showPage("gamePage");
+
+  document.querySelectorAll(".nav-btn").forEach(function(btn){
+    btn.classList.remove("active");
+  });
+
+  document.getElementById("gameTitle").textContent =
+    "Super Strike";
+
+  const area =
+    document.getElementById("gameArea");
+
+  area.innerHTML = `
+    <div class="loading">
+
+      <div class="loader-ball">⚽</div>
+
+      <h2>SUPER STRIKE</h2>
+
+      <p>Loading demo game...</p>
+
+    </div>
+  `;
+
+  setTimeout(function(){
+
+    if(type === "football"){
+      footballGame(area);
+    }else{
+      footballGame(area);
     }
-  ]
-};
 
-let spinBusy=false;
-let starTaps=0;
-let candyCount=0;
-
-
-function save(){
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(data)
-  );
-
-  update();
+  },1200);
 }
 
 
-function update(){
+/* =========================
+   FOOTBALL GAME
+========================= */
 
-  document.getElementById("balance")
-    .textContent=data.balance.toFixed(2);
+function footballGame(area){
 
-  document.getElementById("wallet")
-    .textContent=data.balance.toFixed(2);
+  area.innerHTML = `
 
-  document.getElementById("refs")
-    .textContent=data.refs;
+    <div class="football-game">
 
-  document.getElementById("refReward")
-    .textContent=data.refReward.toFixed(2);
+      <div class="scorebar">
 
-
-  const link=
-    location.origin+
-    location.pathname+
-    "#/register?referCode=258282&inviteType=INVITE_ROULETTE";
-
-  document.getElementById("refLink")
-    .textContent=link;
-
-
-  renderTx();
-}
-
-
-function show(id){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(x=>{
-      x.classList.remove("active");
-    });
-
-
-  document
-    .getElementById(id)
-    .classList.add("active");
-
-
-  document
-    .querySelectorAll(".nav button")
-    .forEach(x=>{
-      x.classList.toggle(
-        "active",
-        x.dataset.page===id
-      );
-    });
-
-
-  window.scrollTo(0,0);
-
-  update();
-}
-
-
-function renderTx(){
-
-  let html=
-    data.transactions
-    .map(t=>`
-
-      <div class="tx">
-
-        <div>
-          🎁 ${safe(t.name)}
-
-          <small>
-            ${safe(t.date)}
-          </small>
+        <div class="team">
+          PLAYER
         </div>
 
-        <div class="plus">
-          +$${Number(t.amount).toFixed(2)}
+        <div class="score">
+          <span id="score">0</span>
+        </div>
+
+        <div class="team">
+          DEMO MATCH
         </div>
 
       </div>
 
-    `)
-    .join("");
+
+      <div class="pitch">
+
+        <div class="pitch-line"></div>
+
+        <div class="center-circle"></div>
+
+        <div class="goal left"></div>
+
+        <div class="goal right"></div>
+
+        <div class="football" id="football">
+          ⚽
+        </div>
+
+      </div>
 
 
-  if(!html){
-    html=
-      "<div class='notice'>No transactions yet.</div>";
-  }
+      <div class="controls">
+
+        <div class="amount-row">
+
+          <button
+            class="small-btn"
+            onclick="changeAmount(-1)">
+            −
+          </button>
+
+          <div class="amount-box">
+            Demo Play: <span id="playAmount">1.00</span>
+          </div>
+
+          <button
+            class="small-btn"
+            onclick="changeAmount(1)">
+            +
+          </button>
+
+        </div>
 
 
-  document.getElementById("txList")
-    .innerHTML=html;
+        <button
+          class="play-game"
+          id="playButton"
+          onclick="playFootball()">
+          ⚽ PLAY DEMO
+        </button>
 
-  document.getElementById("txWallet")
-    .innerHTML=html;
+        <div
+          class="game-message"
+          id="gameMessage">
+          Tap PLAY DEMO to start the animation.
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  window.demoPlayAmount = 1;
 }
 
 
-function addReward(amount,name){
+/* =========================
+   PLAY AMOUNT
+========================= */
 
-  data.balance+=amount;
+function changeAmount(value){
 
-  data.transactions.unshift({
+  window.demoPlayAmount =
+    Number(window.demoPlayAmount || 1) + value;
+
+  if(window.demoPlayAmount < 1){
+    window.demoPlayAmount = 1;
+  }
+
+  if(window.demoPlayAmount > 10){
+    window.demoPlayAmount = 10;
+  }
+
+  const el =
+    document.getElementById("playAmount");
+
+  if(el){
+    el.textContent =
+      window.demoPlayAmount.toFixed(2);
+  }
+}
+
+
+/* =========================
+   PLAY FOOTBALL
+========================= */
+
+function playFootball(){
+
+  const button =
+    document.getElementById("playButton");
+
+  const football =
+    document.getElementById("football");
+
+  const message =
+    document.getElementById("gameMessage");
+
+  if(!button || !football){
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "⚽ PLAYING...";
+
+  football.classList.remove("kick");
+
+  void football.offsetWidth;
+
+  football.classList.add("kick");
+
+  message.textContent =
+    "Match in progress...";
+
+  setTimeout(function(){
+
+    const reward =
+      Math.floor(Math.random() * 10) + 1;
+
+    const amount =
+      Number(window.demoPlayAmount || 1);
+
+    const total =
+      reward * amount;
+
+    document.getElementById("score").textContent =
+      reward;
+
+    balance += total;
+
+    gamesPlayed++;
+
+    addTransaction(
+      "Super Strike Demo Win",
+      total
+    );
+
+    updateBalance();
+
+    message.textContent =
+      "SUPER STRIKE! Demo reward received.";
+
+    button.disabled = false;
+    button.textContent =
+      "⚽ PLAY AGAIN";
+
+    showWin(total);
+
+  },1200);
+}
+
+
+/* =========================
+   WIN POPUP
+========================= */
+
+function showWin(amount){
+
+  document.getElementById("winAmount").textContent =
+    "+" + amount.toFixed(2) + " Demo Credits";
+
+  document
+    .getElementById("winPopup")
+    .classList.remove("hidden");
+}
+
+
+function closeWin(){
+
+  document
+    .getElementById("winPopup")
+    .classList.add("hidden");
+}
+
+
+/* =========================
+   TRANSACTIONS
+========================= */
+
+function addTransaction(name, amount){
+
+  transactions.unshift({
 
     name:name,
 
-    amount:amount,
+    amount:Number(amount),
 
-    date:new Date().toLocaleDateString()
+    date:new Date().toLocaleString()
 
   });
 
-  save();
+  transactions =
+    transactions.slice(0,30);
 
-  toast(
-    "Demo reward +$"+
-    amount.toFixed(2)
+  localStorage.setItem(
+    "demoTransactions",
+    JSON.stringify(transactions)
+  );
+
+  renderTransactions();
+}
+
+
+function renderTransactions(){
+
+  const list =
+    document.getElementById("transactionsList");
+
+  if(!list){
+    return;
+  }
+
+  if(transactions.length === 0){
+
+    list.innerHTML = `
+      <div style="
+        text-align:center;
+        color:#777;
+        padding:30px;
+        font-size:12px;
+      ">
+        No demo transactions yet.
+      </div>
+    `;
+
+    return;
+  }
+
+  list.innerHTML =
+    transactions.map(function(tx){
+
+      return `
+
+        <div class="tx-item">
+
+          <div>
+
+            <div class="tx-name">
+              ${escapeHTML(tx.name)}
+            </div>
+
+            <div class="tx-date">
+              ${escapeHTML(tx.date)}
+            </div>
+
+          </div>
+
+          <div class="tx-amount">
+            +${Number(tx.amount).toFixed(2)}
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+}
+
+
+/* =========================
+   DAILY BONUS
+========================= */
+
+function dailyBonus(){
+
+  const today =
+    new Date().toDateString();
+
+  const claimed =
+    localStorage.getItem("dailyBonusDate");
+
+  if(claimed === today){
+
+    alert("Today's demo bonus has already been claimed.");
+
+    return;
+  }
+
+  const reward = 5;
+
+  balance += reward;
+
+  localStorage.setItem(
+    "dailyBonusDate",
+    today
+  );
+
+  addTransaction(
+    "Daily Demo Bonus",
+    reward
+  );
+
+  updateBalance();
+
+  alert(
+    "You received +" +
+    reward.toFixed(2) +
+    " demo credits!"
   );
 }
 
 
-function claimBonus(){
+/* =========================
+   REFERRAL
+========================= */
 
-  addReward(
-    2,
-    "Daily Demo Bonus"
-  );
-}
+function copyReferral(){
 
+  const code =
+    document.getElementById("refCode")
+      .textContent;
 
+  navigator.clipboard.writeText(code)
+    .then(function(){
 
+      alert("Referral code copied!");
 
+    })
+    .catch(function(){
 
-function wheelGame(p){
+      alert(
+        "Referral code: " + code
+      );
 
-  p.innerHTML=`
-
-    <h1>Lucky Wheel</h1>
-
-    <div class="sub">
-      Spin for a fictional demo reward
-    </div>
-
-    <div class="gamebox">
-
-      <div class="pointer"></div>
-
-      <div
-        class="wheel"
-        id="wheel">
-      </div>
-
-      <button
-        class="btn gold"
-        id="spin"
-        onclick="spin()">
-
-        SPIN
-
-      </button>
-
-      <div
-        class="result"
-        id="result">
-      </div>
-
-    </div>
-
-  `;
-}
-
-
-function spin(){
-
-  if(spinBusy){
-    return;
-  }
-
-  spinBusy=true;
-
-  const w=
-    document.getElementById("wheel");
-
-  const r=
-    document.getElementById("result");
-
-
-  const reward=
-    [1,2,3,5,8,10]
-    [Math.floor(Math.random()*6)];
-
-
-  w.style.transform=
-    `rotate(${1440+
-    Math.floor(Math.random()*360)}deg)`;
-
-
-  setTimeout(()=>{
-
-    r.textContent=
-      "You received $"+
-      reward.toFixed(2)+
-      " demo credits!";
-
-
-    addReward(
-      reward,
-      "Lucky Wheel Demo"
-    );
-
-
-    spinBusy=false;
-
-  },3050);
-}
-
-
-function chestGame(p){
-
-  p.innerHTML=`
-
-    <h1>Treasure Box</h1>
-
-    <div class="sub">
-      Choose one fictional demo box
-    </div>
-
-    <div class="gamebox">
-
-      <div class="chests">
-
-        ${[1,2,3].map(i=>`
-
-          <button
-            class="chest"
-            onclick="openChest(this)">
-
-            🎁
-
-            <small>
-              BOX ${i}
-            </small>
-
-          </button>
-
-        `).join("")}
-
-      </div>
-
-      <div
-        class="result"
-        id="result">
-      </div>
-
-    </div>
-
-  `;
-}
-
-
-function openChest(btn){
-
-  if(btn.classList.contains("open")){
-    return;
-  }
-
-
-  document
-    .querySelectorAll(".chest")
-    .forEach(x=>{
-      x.disabled=true;
     });
-
-
-  btn.classList.add("open");
-
-  btn.innerHTML=
-    "💎<small>OPENED</small>";
-
-
-  const reward=
-    [1,3,5]
-    [Math.floor(Math.random()*3)];
-
-
-  document.getElementById("result")
-    .textContent=
-    "Treasure found: $"+
-    reward.toFixed(2)+
-    " demo credits!";
-
-
-  addReward(
-    reward,
-    "Treasure Box Demo"
-  );
 }
 
 
-function starGame(p){
+/* =========================
+   RESET
+========================= */
 
-  starTaps=0;
+function resetDemo(){
 
-
-  p.innerHTML=`
-
-    <h1>Star Tap</h1>
-
-    <div class="sub">
-      Tap the star 10 times
-    </div>
-
-    <div class="gamebox">
-
-      <div class="tap-area">
-
-        <button
-          class="star"
-          onclick="tapStar()">
-
-          ⭐
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="result">
-
-        0 / 10
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-
-function tapStar(){
-
-  starTaps++;
-
-
-  document.getElementById("result")
-    .textContent=
-    starTaps+" / 10";
-
-
-  if(starTaps>=10){
-
-    addReward(
-      5,
-      "Star Tap Demo"
-    );
-
-
-    document.getElementById("result")
-      .textContent=
-      "Challenge complete! +$5.00 demo credits";
-  }
-}
-
-
-function candyGame(p){
-
-  candyCount=0;
-
-
-  const emojis=[
-    "🍬",
-    "🍭",
-    "🍫",
-    "🍩",
-    "🍪",
-    "🧁",
-    "🍬",
-    "🍭"
-  ];
-
-
-  p.innerHTML=`
-
-    <h1>Candy Rush</h1>
-
-    <div class="sub">
-      Collect all 8 candies
-    </div>
-
-    <div class="gamebox">
-
-      <div class="candy-grid">
-
-        ${emojis.map(e=>`
-
-          <button
-            class="candy"
-            onclick="eatCandy(this)">
-
-            ${e}
-
-          </button>
-
-        `).join("")}
-
-      </div>
-
-      <div
-        class="result"
-        id="result">
-
-        0 / 8
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-
-function eatCandy(b){
-
-  if(b.classList.contains("done")){
+  if(!confirm(
+    "Reset demo balance and history?"
+  )){
     return;
   }
 
+  balance = 100;
 
-  b.classList.add("done");
+  gamesPlayed = 0;
 
-  b.disabled=true;
+  transactions = [];
 
-  candyCount++;
-
-
-  document.getElementById("result")
-    .textContent=
-    candyCount+" / 8";
-
-
-  if(candyCount===8){
-
-    addReward(
-      4,
-      "Candy Rush Demo"
-    );
-
-
-    document.getElementById("result")
-      .textContent=
-      "All candies collected! +$4.00 demo credits";
-  }
-}
-
-
-function copyRef(){
-
-  const text=
-    document.getElementById("refLink")
-    .textContent;
-
-
-  if(navigator.clipboard){
-
-    navigator.clipboard
-      .writeText(text)
-      .then(()=>{
-        toast("Referral link copied");
-      });
-
-  }else{
-
-    toast("Copy not supported");
-
-  }
-}
-
-
-function showTransactions(){
-
-  show("transactions");
-
-}
-
-
-function logout(){
-
-  data.balance=100;
-
-  toast("Demo session reset");
-
-  setTimeout(()=>{
-    show("home");
-  },500);
-
-}
-
-
-function showInfo(){
-
-  modal(
-    "Demo Website",
-
-    "This is an interactive visual/gameplay prototype. All rewards are fictional demo credits. There are no real-money deposits, withdrawals or wagering features."
+  localStorage.removeItem(
+    "demoTransactions"
   );
 
+  localStorage.removeItem(
+    "dailyBonusDate"
+  );
+
+  updateBalance();
+
+  renderTransactions();
+
+  alert(
+    "Demo account reset."
+  );
 }
 
 
-function modal(title,text){
+/* =========================
+   SECURITY / TEXT
+========================= */
 
-  document.getElementById("mtitle")
-    .textContent=title;
+function escapeHTML(value){
 
-  document.getElementById("mtext")
-    .textContent=text;
-
-  document.getElementById("modal")
-    .classList.add("show");
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-function closeModal(){
+/* =========================
+   START
+========================= */
 
-  document.getElementById("modal")
-    .classList.remove("show");
+updateBalance();
 
-}
-
-
-function toast(text){
-
-  const x=
-    document.getElementById("toast");
-
-  x.textContent=text;
-
-  x.classList.add("show");
-
-  setTimeout(()=>{
-    x.classList.remove("show");
-  },1800);
-
-}
-
-
-function safe(s){
-
-  return String(s)
-    .replace(/[&<>"']/g,m=>({
-
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-
-    }[m]));
-
-}
-
-
-update();
+renderTransactions();
 
 </script>
 
 </body>
-</html>
+  </html>
