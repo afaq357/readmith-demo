@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Readmith Demo</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f6fb;
+  color:#172033;
+}
+header{
+  background:#172554;
+  color:white;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{font-size:23px;font-weight:800}
+.container{max-width:900px;margin:auto;padding:20px}
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 4px 18px #00000012;
+}
+h1,h2,h3{margin-top:0}
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #d5dbea;
+  border-radius:10px;
+  margin:7px 0 12px;
+  font-size:15px;
+}
+button{
+  border:0;
+  border-radius:10px;
+  padding:13px 18px;
+  background:#2563eb;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+button.secondary{background:#64748b}
+button.danger{background:#dc2626}
+button.green{background:#16a34a}
+.hidden{display:none}
+.nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.nav button{flex:1;min-width:100px}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.stat{
+  background:#eef4ff;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+}
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-top:5px;
+}
+.ref{
+  background:#f8fafc;
+  border:1px dashed #94a3b8;
+  padding:14px;
+  border-radius:10px;
+  word-break:break-all;
+}
+.small{font-size:13px;color:#64748b}
+table{width:100%;border-collapse:collapse}
+td,th{padding:10px;border-bottom:1px solid #e5e7eb;text-align:left}
+.notice{
+  background:#fff7ed;
+  border-left:4px solid #f97316;
+  padding:12px;
+  margin-bottom:18px;
+  border-radius:8px;
+}
+@media(max-width:600px){
+ .stats{grid-template-columns:1fr}
+ header{padding:15px}
+ .container{padding:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Readmith Demo</div>
+  <button id="logoutBtn" class="secondary hidden" onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+
+<!-- AUTH -->
+<section id="auth">
+
+<div class="card">
+<h2>Create Demo Account</h2>
+
+<input id="regName" placeholder="Your name">
+<input id="regEmail" type="email" placeholder="Email">
+<input id="regPassword" type="password" placeholder="Password">
+
+<button onclick="register()">Create Account</button>
+
+<p class="small">
+This is a demonstration account system. Do not enter real passwords.
+</p>
+</div>
+
+<div class="card">
+<h2>Demo Login</h2>
+
+<input id="loginEmail" type="email" placeholder="Email">
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p class="small">
+Admin demo: admin@demo.com / admin123
+</p>
+</div>
+
+</section>
+
+<!-- USER APP -->
+<section id="app" class="hidden">
+
+<div class="notice">
+<strong>Demo Mode:</strong> Balance and transactions shown here are fictional testing data.
+</div>
+
+<div class="nav">
+<button onclick="showPage('dashboard')">Dashboard</button>
+<button onclick="showPage('referral')">Referral</button>
+<button onclick="showPage('transactions')">Transactions</button>
+<button id="adminNav" class="hidden" onclick="showPage('admin')">Admin</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="page">
+
+<div class="card">
+<h2>Welcome, <span id="userName"></span> 👋</h2>
+
+<div class="stats">
+<div class="stat">
+Balance
+<strong id="balance">$0</strong>
+</div>
+
+<div class="stat">
+Referrals
+<strong id="refCount">0</strong>
+</div>
+
+<div class="stat">
+Account
+<strong>Active</strong>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Account Information</h3>
+<p><strong>Email:</strong> <span id="userEmail"></span></p>
+<p><strong>Referral Code:</strong> <span id="userCode"></span></p>
+</div>
+
+</div>
+
+<!-- REFERRAL -->
+<div id="referral" class="page hidden">
+
+<div class="card">
+<h2>Invite Friends</h2>
+
+<p>Share your demo referral link:</p>
+
+<div class="ref" id="refLink"></div>
+
+<br>
+
+<button onclick="copyReferral()">Copy Referral Link</button>
+
+<p id="copyMsg" class="small"></p>
+</div>
+
+<div class="card">
+<h3>How the demo referral system works</h3>
+<p>Each account receives a unique referral code.</p>
+<p>When another demo account is registered with that code, the referral relationship can be recorded.</p>
+</div>
+
+</div>
+
+<!-- TRANSACTIONS -->
+<div id="transactions" class="page hidden">
+
+<div class="card">
+<h2>Demo Transactions</h2>
+
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="transactionBody"></tbody>
+</table>
+
+</div>
+
+</div>
+
+<!-- ADMIN -->
+<div id="admin" class="page hidden">
+
+<div class="card">
+<h2>Admin Dashboard</h2>
+
+<div class="stats">
+<div class="stat">
+Users
+<strong id="totalUsers">0</strong>
+</div>
+
+<div class="stat">
+Referrals
+<strong id="totalRefs">0</strong>
+</div>
+
+<div class="stat">
+Demo Balance
+<strong id="totalBalance">$0</strong>
+</div>
+</div>
+
+</div>
+
+<div class="card">
+<h3>Registered Demo Users</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Referral Code</th>
+</tr>
+</thead>
+
+<tbody id="userTable"></tbody>
+</table>
+
+<br>
+
+<button class="danger" onclick="clearDemoData()">Clear Demo Data</button>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<script>
+
+const ADMIN_EMAIL="admin@demo.com";
+const ADMIN_PASSWORD="admin123";
+
+function getUsers(){
+  return JSON.parse(localStorage.getItem("readmith_users") || "[]");
+}
+
+function saveUsers(users){
+  localStorage.setItem("readmith_users",JSON.stringify(users));
+}
+
+function makeCode(){
+  return Math.floor(100000+Math.random()*900000).toString();
+}
+
+function register(){
+
+  const name=document.getElementById("regName").value.trim();
+  const email=document.getElementById("regEmail").value.trim().toLowerCase();
+  const password=document.getElementById("regPassword").value;
+
+  if(!name || !email || !password){
+    alert("Please fill all fields.");
+    return;
+  }
+
+  let users=getUsers();
+
+  if(users.some(u=>u.email===email)){
+    alert("This demo email already exists.");
+    return;
+  }
+
+  const user={
+    id:Date.now(),
+    name:name,
+    email:email,
+    password:password,
+    referralCode:makeCode(),
+    referrals:0,
+    balance:100,
+    transactions:[
+      {
+        date:new Date().toLocaleDateString(),
+        type:"Demo Welcome Balance",
+        amount:"+$100"
+      }
+    ]
+  };
+
+  users.push(user);
+  saveUsers(users);
+
+  alert("Demo account created successfully.");
+
+  document.getElementById("regName").value="";
+  document.getElementById("regEmail").value="";
+  document.getElementById("regPassword").value="";
+
+  loginWithUser(user);
+}
+
+function login(){
+
+  const email=document.getElementById("loginEmail").value.trim().toLowerCase();
+  const password=document.getElementById("loginPassword").value;
+
+  if(email===ADMIN_EMAIL && password===ADMIN_PASSWORD){
+
+    localStorage.setItem("readmith_current","ADMIN");
+    openApp(true);
+    return;
+  }
+
+  const user=getUsers().find(
+    u=>u.email===email && u.password===password
+  );
+
+  if(!user){
+    alert("Invalid demo login.");
+    return;
+  }
+
+  loginWithUser(user);
+}
+
+function loginWithUser(user){
+  localStorage.setItem("readmith_current",String(user.id));
+  openApp(false);
+}
+
+function openApp(isAdmin){
+
+  document.getElementById("auth").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("logoutBtn").classList.remove("hidden");
+
+  if(isAdmin){
+
+    document.getElementById("adminNav").classList.remove("hidden");
+    showPage("admin");
+    loadAdmin();
+
+  }else{
+
+    document.getElementById("adminNav").classList.add("hidden");
+
+    const id=Number(localStorage.getItem("readmith_current"));
+    const user=getUsers().find(u=>u.id===id);
+
+    if(user) loadUser(user);
+
+    showPage("dashboard");
+  }
+}
+
+function loadUser(user){
+
+  document.getElementById("userName").textContent=user.name;
+  document.getElementById("userEmail").textContent=user.email;
+  document.getElementById("userCode").textContent=user.referralCode;
+  document.getElementById("balance").textContent="$"+user.balance;
+  document.getElementById("refCount").textContent=user.referrals;
+
+  const link=location.origin+location.pathname+
+    "?referCode="+user.referralCode;
+
+  document.getElementById("refLink").textContent=link;
+
+  const body=document.getElementById("transactionBody");
+  body.innerHTML="";
+
+  (user.transactions||[]).forEach(t=>{
+
+    body.innerHTML+=`
+      <tr>
+        <td>${t.date}</td>
+        <td>${t.type}</td>
+        <td>${t.amount}</td>
+      </tr>
+    `;
+  });
+}
+
+function showPage(page){
+
+  document.querySelectorAll(".page").forEach(
+    p=>p.classList.add("hidden")
+  );
+
+  document.getElementById(page).classList.remove("hidden");
+
+  const id=localStorage.getItem("readmith_current");
+
+  if(id && id!=="ADMIN"){
+
+    const user=getUsers().find(u=>u.id===Number(id));
+
+    if(user) loadUser(user);
+  }
+
+  if(page==="admin") loadAdmin();
+}
+
+function copyReferral(){
+
+  const link=document.getElementById("refLink").textContent;
+
+  navigator.clipboard.writeText(link).then(()=>{
+
+    document.getElementById("copyMsg").textContent=
+      "Referral link copied.";
+
+  }).catch(()=>{
+
+    alert(link);
+
+  });
+}
+
+function loadAdmin(){
+
+  const users=getUsers();
+
+  document.getElementById("totalUsers").textContent=users.length;
+
+  const refs=users.reduce(
+    (sum,u)=>sum+(u.referrals||0),0
+  );
+
+  const balance=users.reduce(
+    (sum,u)=>sum+(u.balance||0),0
+  );
+
+  document.getElementById("totalRefs").textContent=refs;
+  document.getElementById("totalBalance").textContent="$"+balance;
+
+  const table=document.getElementById("userTable");
+
+  table.innerHTML="";
+
+  users.forEach(u=>{
+
+    table.innerHTML+=`
+      <tr>
+        <td>${u.name}</td>
+        <td>${u.email}</td>
+        <td>${u.referralCode}</td>
+      </tr>
+    `;
+
+  });
+}
+
+function clearDemoData(){
+
+  if(confirm("Delete all demo users and data?")){
+
+    localStorage.removeItem("readmith_users");
+    localStorage.removeItem("readmith_current");
+
+    location.reload();
+  }
+}
+
+function logout(){
+
+  localStorage.removeItem("readmith_current");
+  location.reload();
+}
+
+window.onload=function(){
+
+  const current=localStorage.getItem("readmith_current");
+
+  if(current==="ADMIN"){
+    openApp(true);
+  }
+  else if(current){
+
+    const user=getUsers().find(
+      u=>u.id===Number(current)
+    );
+
+    if(user) openApp(false);
+    else localStorage.removeItem("readmith_current");
+  }
+};
+
+</script>
+
+</body>
+  </html>
