@@ -2,541 +2,1704 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Readmith Demo</title>
 
 <style>
-*{box-sizing:border-box}
-body{
+*{
+  box-sizing:border-box;
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f3f6fb;
-  color:#172033;
+  padding:0;
 }
-header{
-  background:#172554;
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b1020;
+  color:#fff;
+  min-height:100vh;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+.app{
+  max-width:480px;
+  min-height:100vh;
+  margin:auto;
+  background:
+    radial-gradient(circle at 50% -10%,#263b78 0,#11182d 32%,#080c18 70%);
+  padding-bottom:78px;
+}
+
+/* HEADER */
+
+.header{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(8,12,24,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.logo{
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#ffd33d;
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.header-btn{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#171f38;
   color:white;
-  padding:18px 20px;
+  font-size:18px;
+}
+
+/* PAGES */
+
+.page{
+  display:none;
+  padding:16px;
+}
+
+.page.active{
+  display:block;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:190px;
+  border-radius:22px;
+  overflow:hidden;
+  padding:24px 20px;
+  margin-bottom:18px;
+  background:
+    linear-gradient(120deg,#6d32e9,#254bd7 55%,#13a5d7);
+  box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  right:-55px;
+  top:-50px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+}
+
+.hero h1{
+  position:relative;
+  z-index:2;
+  font-size:29px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  position:relative;
+  z-index:2;
+  color:#e7ebff;
+  line-height:1.5;
+  font-size:14px;
+  max-width:280px;
+}
+
+.hero-btn{
+  position:relative;
+  z-index:3;
+  margin-top:18px;
+  padding:11px 18px;
+  border-radius:12px;
+  background:#ffd43b;
+  color:#17120a;
+  font-weight:800;
+}
+
+/* DEMO NOTICE */
+
+.demo-notice{
+  padding:11px 14px;
+  border-radius:13px;
+  background:rgba(255,211,61,.09);
+  border:1px solid rgba(255,211,61,.25);
+  color:#ffe98b;
+  font-size:12px;
+  margin-bottom:16px;
+}
+
+/* BALANCE */
+
+.balance-card{
+  background:linear-gradient(135deg,#151f3b,#10182d);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.balance-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.logo{font-size:23px;font-weight:800}
-.container{max-width:900px;margin:auto;padding:20px}
-.card{
-  background:white;
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 4px 18px #00000012;
+
+.balance-label{
+  color:#aeb7d0;
+  font-size:13px;
 }
-h1,h2,h3{margin-top:0}
-input{
-  width:100%;
-  padding:13px;
-  border:1px solid #d5dbea;
-  border-radius:10px;
-  margin:7px 0 12px;
-  font-size:15px;
-}
-button{
-  border:0;
-  border-radius:10px;
-  padding:13px 18px;
-  background:#2563eb;
-  color:white;
-  font-weight:700;
-  cursor:pointer;
-}
-button.secondary{background:#64748b}
-button.danger{background:#dc2626}
-button.green{background:#16a34a}
-.hidden{display:none}
-.nav{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:18px;
-}
-.nav button{flex:1;min-width:100px}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-.stat{
-  background:#eef4ff;
-  border-radius:12px;
-  padding:18px;
-  text-align:center;
-}
-.stat strong{
-  display:block;
-  font-size:25px;
+
+.balance{
+  font-size:31px;
+  font-weight:900;
   margin-top:5px;
 }
-.ref{
-  background:#f8fafc;
-  border:1px dashed #94a3b8;
+
+.balance small{
+  font-size:14px;
+  color:#aeb7d0;
+}
+
+.balance-icon{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ffd43b,#ff9e2c);
+  color:#17120a;
+  font-size:23px;
+}
+
+/* SECTION */
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:20px 0 12px;
+}
+
+.section-title h2{
+  font-size:18px;
+}
+
+.section-title span{
+  color:#8e9ab8;
+  font-size:12px;
+}
+
+/* GAME CATEGORIES */
+
+.categories{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.categories::-webkit-scrollbar{
+  display:none;
+}
+
+.category{
+  min-width:76px;
+  padding:12px 8px;
+  text-align:center;
+  border-radius:14px;
+  background:#151e36;
+  border:1px solid rgba(255,255,255,.06);
+  color:#b9c2d9;
+  font-size:11px;
+}
+
+.category.active{
+  background:linear-gradient(135deg,#5c36ef,#3568e9);
+  color:#fff;
+}
+
+.category-icon{
+  font-size:22px;
+  margin-bottom:6px;
+}
+
+/* GAME GRID */
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.game{
+  min-height:145px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:#171f37;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.game-art{
+  height:100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+}
+
+.game:nth-child(1) .game-art{
+  background:linear-gradient(135deg,#5426d9,#c52cff);
+}
+
+.game:nth-child(2) .game-art{
+  background:linear-gradient(135deg,#087a9e,#19d1b1);
+}
+
+.game:nth-child(3) .game-art{
+  background:linear-gradient(135deg,#e65a22,#f3b52f);
+}
+
+.game:nth-child(4) .game-art{
+  background:linear-gradient(135deg,#ba245c,#ff557e);
+}
+
+.game-info{
+  padding:9px 11px;
+}
+
+.game-name{
+  font-size:13px;
+  font-weight:700;
+}
+
+.game-tag{
+  color:#8995b4;
+  font-size:10px;
+  margin-top:3px;
+}
+
+/* PROMO */
+
+.promo{
+  margin-top:18px;
+  border-radius:18px;
+  padding:17px;
+  background:linear-gradient(135deg,#1c2d5a,#202a4a);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.promo h3{
+  font-size:17px;
+}
+
+.promo p{
+  color:#9da9c6;
+  font-size:12px;
+  margin-top:5px;
+}
+
+/* BUTTONS */
+
+.primary{
+  width:100%;
+  padding:13px;
+  margin-top:14px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#6b3df0,#3975ed);
+  color:white;
+  font-weight:800;
+}
+
+.secondary{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border-radius:13px;
+  background:#1a233d;
+  color:white;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* FORMS */
+
+.auth{
+  padding-top:35px;
+}
+
+.auth-logo{
+  text-align:center;
+  font-size:31px;
+  font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:28px;
+}
+
+.auth-logo span{
+  color:#ffd43b;
+}
+
+.auth-card{
+  background:#121a30;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  padding:22px;
+}
+
+.auth-card h1{
+  font-size:23px;
+  margin-bottom:6px;
+}
+
+.auth-card p{
+  color:#8e9ab7;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.field label{
+  display:block;
+  color:#aeb7d0;
+  font-size:12px;
+  margin-bottom:7px;
+}
+
+.field input{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  outline:none;
+  border:1px solid #28334f;
+  background:#0b1121;
+  color:white;
+}
+
+.field input:focus{
+  border-color:#5d64f4;
+}
+
+/* REFERRAL */
+
+.ref-card{
+  background:linear-gradient(135deg,#1c2860,#171d3d);
+  border-radius:20px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.ref-code{
+  margin-top:15px;
+  background:#090f1e;
+  border-radius:12px;
   padding:14px;
-  border-radius:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-align:center;
+  color:#ffd43b;
   word-break:break-all;
 }
-.small{font-size:13px;color:#64748b}
-table{width:100%;border-collapse:collapse}
-td,th{padding:10px;border-bottom:1px solid #e5e7eb;text-align:left}
-.notice{
-  background:#fff7ed;
-  border-left:4px solid #f97316;
-  padding:12px;
-  margin-bottom:18px;
-  border-radius:8px;
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:15px;
 }
-@media(max-width:600px){
- .stats{grid-template-columns:1fr}
- header{padding:15px}
- .container{padding:12px}
+
+.stat{
+  background:#151f38;
+  border-radius:14px;
+  padding:14px;
+}
+
+.stat b{
+  display:block;
+  font-size:21px;
+}
+
+.stat span{
+  color:#8995b2;
+  font-size:11px;
+}
+
+/* TRANSACTIONS */
+
+.transaction{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.transaction-left{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.tx-icon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#192440;
+}
+
+.tx-name{
+  font-size:13px;
+  font-weight:700;
+}
+
+.tx-date{
+  font-size:10px;
+  color:#77839e;
+  margin-top:3px;
+}
+
+.tx-amount{
+  font-weight:800;
+  color:#6ee7a5;
+}
+
+/* PROFILE */
+
+.profile-head{
+  text-align:center;
+  padding:15px 0 20px;
+}
+
+.avatar{
+  width:76px;
+  height:76px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6944ef,#20b9ee);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:900;
+  border:4px solid #202a48;
+}
+
+.profile-name{
+  font-size:20px;
+  font-weight:800;
+  margin-top:10px;
+}
+
+.profile-email{
+  color:#8792ac;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.menu{
+  margin-top:10px;
+  background:#121a30;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.menu-item{
+  width:100%;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  background:transparent;
+  color:#fff;
+  text-align:left;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.menu-item:last-child{
+  border-bottom:0;
+}
+
+.menu-item span:last-child{
+  margin-left:auto;
+  color:#6f7c9b;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:480px;
+  height:70px;
+  background:rgba(8,12,24,.97);
+  backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  z-index:50;
+}
+
+.nav-item{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  background:transparent;
+  color:#69758f;
+  font-size:10px;
+}
+
+.nav-item .icon{
+  font-size:21px;
+}
+
+.nav-item.active{
+  color:#ffd43b;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.72);
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:480px;
+  background:#11192e;
+  border-radius:24px 24px 0 0;
+  padding:22px;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+
+.modal-box h2{
+  margin-bottom:8px;
+}
+
+.modal-box p{
+  color:#8f9ab5;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.close{
+  float:right;
+  background:#1d2740;
+  color:white;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:90px;
+  transform:translateX(-50%) translateY(20px);
+  background:#fff;
+  color:#111;
+  padding:11px 16px;
+  border-radius:12px;
+  font-size:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:200;
+  white-space:nowrap;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* DESKTOP */
+
+@media(min-width:700px){
+  body{
+    padding:20px 0;
+    background:#050812;
+  }
+
+  .app{
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 20px 70px rgba(0,0,0,.45);
+  }
+
+  .bottom-nav{
+    bottom:20px;
+    border-radius:18px;
+    width:480px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">Readmith Demo</div>
-  <button id="logoutBtn" class="secondary hidden" onclick="logout()">Logout</button>
+<div class="app">
+
+<header class="header">
+  <div class="logo">READ<span>MITH</span></div>
+
+  <div class="header-actions">
+    <button class="header-btn" onclick="showNotice()">🔔</button>
+    <button class="header-btn" onclick="go('profile')">👤</button>
+  </div>
 </header>
 
-<div class="container">
 
-<!-- AUTH -->
-<section id="auth">
+<!-- HOME -->
 
-<div class="card">
-<h2>Create Demo Account</h2>
+<section id="home" class="page active">
 
-<input id="regName" placeholder="Your name">
-<input id="regEmail" type="email" placeholder="Email">
-<input id="regPassword" type="password" placeholder="Password">
+  <div class="demo-notice">
+    ⚡ DEMO MODE — All balance and game activity on this website is fictional.
+  </div>
 
-<button onclick="register()">Create Account</button>
+  <div class="hero">
+    <h1>Play & Explore</h1>
+    <p>Enjoy a modern gaming-style demo experience with rewards, games and referral features.</p>
+    <button class="hero-btn" onclick="go('games')">Explore Games</button>
+  </div>
 
-<p class="small">
-This is a demonstration account system. Do not enter real passwords.
-</p>
-</div>
+  <div class="balance-card">
+    <div class="balance-top">
+      <div>
+        <div class="balance-label">Demo Balance</div>
+        <div class="balance">$<span id="balance">100.00</span></div>
+      </div>
 
-<div class="card">
-<h2>Demo Login</h2>
+      <div class="balance-icon">💎</div>
+    </div>
+  </div>
 
-<input id="loginEmail" type="email" placeholder="Email">
-<input id="loginPassword" type="password" placeholder="Password">
+  <div class="section-title">
+    <h2>Categories</h2>
+    <span>Explore</span>
+  </div>
 
-<button onclick="login()">Login</button>
+  <div class="categories">
+    <button class="category active">
+      <div class="category-icon">🔥</div>
+      Popular
+    </button>
 
-<p class="small">
-Admin demo: admin@demo.com / admin123
-</p>
-</div>
+    <button class="category">
+      <div class="category-icon">🎯</div>
+      Arcade
+    </button>
+
+    <button class="category">
+      <div class="category-icon">🧩</div>
+      Puzzle
+    </button>
+
+    <button class="category">
+      <div class="category-icon">🏆</div>
+      Rewards
+    </button>
+  </div>
+
+  <div class="section-title">
+    <h2>Featured Games</h2>
+    <span onclick="go('games')">View all</span>
+  </div>
+
+  <div class="games">
+
+    <div class="game" onclick="openGame('Lucky Wheel')">
+      <div class="game-art">🎡</div>
+      <div class="game-info">
+        <div class="game-name">Lucky Wheel</div>
+        <div class="game-tag">Demo game</div>
+      </div>
+    </div>
+
+    <div class="game" onclick="openGame('Treasure Box')">
+      <div class="game-art">💎</div>
+      <div class="game-info">
+        <div class="game-name">Treasure Box</div>
+        <div class="game-tag">Demo game</div>
+      </div>
+    </div>
+
+    <div class="game" onclick="openGame('Golden Stars')">
+      <div class="game-art">⭐</div>
+      <div class="game-info">
+        <div class="game-name">Golden Stars</div>
+        <div class="game-tag">Demo game</div>
+      </div>
+    </div>
+
+    <div class="game" onclick="openGame('Candy Rush')">
+      <div class="game-art">🍬</div>
+      <div class="game-info">
+        <div class="game-name">Candy Rush</div>
+        <div class="game-tag">Demo game</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="promo">
+    <h3>🎁 Daily Demo Bonus</h3>
+    <p>Open the demo app every day and explore the reward interface.</p>
+    <button class="primary" onclick="claimBonus()">Claim Demo Bonus</button>
+  </div>
 
 </section>
 
-<!-- USER APP -->
-<section id="app" class="hidden">
 
-<div class="notice">
-<strong>Demo Mode:</strong> Balance and transactions shown here are fictional testing data.
-</div>
+<!-- GAMES -->
 
-<div class="nav">
-<button onclick="showPage('dashboard')">Dashboard</button>
-<button onclick="showPage('referral')">Referral</button>
-<button onclick="showPage('transactions')">Transactions</button>
-<button id="adminNav" class="hidden" onclick="showPage('admin')">Admin</button>
-</div>
+<section id="games" class="page">
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="page">
+  <div class="section-title">
+    <h2>Games</h2>
+    <span>Demo only</span>
+  </div>
 
-<div class="card">
-<h2>Welcome, <span id="userName"></span> 👋</h2>
+  <div class="demo-notice">
+    🎮 These are interface demonstrations only. No real-money wagering is available.
+  </div>
 
-<div class="stats">
-<div class="stat">
-Balance
-<strong id="balance">$0</strong>
-</div>
+  <div class="games">
 
-<div class="stat">
-Referrals
-<strong id="refCount">0</strong>
-</div>
+    <div class="game" onclick="openGame('Lucky Wheel')">
+      <div class="game-art">🎡</div>
+      <div class="game-info">
+        <div class="game-name">Lucky Wheel</div>
+        <div class="game-tag">Play Demo</div>
+      </div>
+    </div>
 
-<div class="stat">
-Account
-<strong>Active</strong>
-</div>
-</div>
-</div>
+    <div class="game" onclick="openGame('Treasure Box')">
+      <div class="game-art">💎</div>
+      <div class="game-info">
+        <div class="game-name">Treasure Box</div>
+        <div class="game-tag">Play Demo</div>
+      </div>
+    </div>
 
-<div class="card">
-<h3>Account Information</h3>
-<p><strong>Email:</strong> <span id="userEmail"></span></p>
-<p><strong>Referral Code:</strong> <span id="userCode"></span></p>
-</div>
+    <div class="game" onclick="openGame('Golden Stars')">
+      <div class="game-art">⭐</div>
+      <div class="game-info">
+        <div class="game-name">Golden Stars</div>
+        <div class="game-tag">Play Demo</div>
+      </div>
+    </div>
 
-</div>
+    <div class="game" onclick="openGame('Candy Rush')">
+      <div class="game-art">🍬</div>
+      <div class="game-info">
+        <div class="game-name">Candy Rush</div>
+        <div class="game-tag">Play Demo</div>
+      </div>
+    </div>
+
+    <div class="game" onclick="openGame('Puzzle Quest')">
+      <div class="game-art">🧩</div>
+      <div class="game-info">
+        <div class="game-name">Puzzle Quest</div>
+        <div class="game-tag">Play Demo</div>
+      </div>
+    </div>
+
+    <div class="game" onclick="openGame('Star Catch')">
+      <div class="game-art">🌟</div>
+      <div class="game-info">
+        <div class="game-name">Star Catch</div>
+        <div class="game-tag">Play Demo</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
 
 <!-- REFERRAL -->
-<div id="referral" class="page hidden">
 
-<div class="card">
-<h2>Invite Friends</h2>
+<section id="referral" class="page">
 
-<p>Share your demo referral link:</p>
+  <div class="section-title">
+    <h2>Invite Friends</h2>
+    <span>Referral</span>
+  </div>
 
-<div class="ref" id="refLink"></div>
+  <div class="ref-card">
 
-<br>
+    <h2>👥 Invite & Earn Demo Rewards</h2>
 
-<button onclick="copyReferral()">Copy Referral Link</button>
+    <p style="color:#9aa6c1;font-size:13px;margin-top:7px;line-height:1.5;">
+      Share your demo referral link with friends and test the referral interface.
+    </p>
 
-<p id="copyMsg" class="small"></p>
-</div>
+    <div class="ref-code" id="refLink">
+      Loading...
+    </div>
 
-<div class="card">
-<h3>How the demo referral system works</h3>
-<p>Each account receives a unique referral code.</p>
-<p>When another demo account is registered with that code, the referral relationship can be recorded.</p>
-</div>
+    <button class="primary" onclick="copyReferral()">
+      Copy Referral Link
+    </button>
 
-</div>
+    <div class="stats">
+      <div class="stat">
+        <b id="refCount">0</b>
+        <span>Referrals</span>
+      </div>
+
+      <div class="stat">
+        <b>$<span id="refReward">0.00</span></b>
+        <span>Demo Rewards</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="promo">
+    <h3>🔗 Your Referral Code</h3>
+    <p id="myCode">---</p>
+  </div>
+
+</section>
+
+
+<!-- WALLET -->
+
+<section id="wallet" class="page">
+
+  <div class="section-title">
+    <h2>Wallet</h2>
+    <span>Demo</span>
+  </div>
+
+  <div class="balance-card">
+
+    <div class="balance-label">
+      Available Demo Balance
+    </div>
+
+    <div class="balance">
+      $<span id="walletBalance">100.00</span>
+    </div>
+
+    <button class="primary" onclick="showNotice()">
+      Demo Wallet Info
+    </button>
+
+  </div>
+
+  <div class="demo-notice">
+    💡 This wallet uses fictional demo credits only. No deposits or withdrawals are connected.
+  </div>
+
+  <div class="section-title">
+    <h2>Recent Activity</h2>
+  </div>
+
+  <div id="walletTransactions"></div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+  <div class="profile-head">
+
+    <div class="avatar" id="avatar">
+      A
+    </div>
+
+    <div class="profile-name" id="profileName">
+      Guest
+    </div>
+
+    <div class="profile-email" id="profileEmail">
+      Demo Account
+    </div>
+
+  </div>
+
+  <div class="menu">
+
+    <button class="menu-item" onclick="go('referral')">
+      👥
+      <span>Referral Center</span>
+      <span>›</span>
+    </button>
+
+    <button class="menu-item" onclick="go('wallet')">
+      💰
+      <span>Demo Wallet</span>
+      <span>›</span>
+    </button>
+
+    <button class="menu-item" onclick="go('transactions')">
+      📊
+      <span>Transactions</span>
+      <span>›</span>
+    </button>
+
+    <button class="menu-item" onclick="showNotice()">
+      ⚙️
+      <span>Settings</span>
+      <span>›</span>
+    </button>
+
+    <button class="menu-item" onclick="logout()">
+      🚪
+      <span>Logout</span>
+      <span>›</span>
+    </button>
+
+  </div>
+
+</section>
+
 
 <!-- TRANSACTIONS -->
-<div id="transactions" class="page hidden">
 
-<div class="card">
-<h2>Demo Transactions</h2>
+<section id="transactions" class="page">
 
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Type</th>
-<th>Amount</th>
-</tr>
-</thead>
+  <div class="section-title">
+    <h2>Transactions</h2>
+    <span>Demo history</span>
+  </div>
 
-<tbody id="transactionBody"></tbody>
-</table>
+  <div id="transactionsList"></div>
 
-</div>
+</section>
 
-</div>
 
-<!-- ADMIN -->
-<div id="admin" class="page hidden">
+<!-- LOGIN -->
 
-<div class="card">
-<h2>Admin Dashboard</h2>
+<section id="login" class="page auth">
 
-<div class="stats">
-<div class="stat">
-Users
-<strong id="totalUsers">0</strong>
-</div>
+  <div class="auth-logo">
+    READ<span>MITH</span>
+  </div>
 
-<div class="stat">
-Referrals
-<strong id="totalRefs">0</strong>
-</div>
+  <div class="auth-card">
 
-<div class="stat">
-Demo Balance
-<strong id="totalBalance">$0</strong>
-</div>
-</div>
+    <h1>Welcome Back</h1>
 
-</div>
+    <p>
+      Login to your demo account.
+    </p>
 
-<div class="card">
-<h3>Registered Demo Users</h3>
+    <div class="field">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="Enter email">
+    </div>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Email</th>
-<th>Referral Code</th>
-</tr>
-</thead>
+    <div class="field">
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="Enter password">
+    </div>
 
-<tbody id="userTable"></tbody>
-</table>
+    <button class="primary" onclick="login()">
+      Login
+    </button>
 
-<br>
+    <button class="secondary" onclick="go('register')">
+      Create Demo Account
+    </button>
 
-<button class="danger" onclick="clearDemoData()">Clear Demo Data</button>
-</div>
+  </div>
 
-</div>
+</section>
+
+
+<!-- REGISTER -->
+
+<section id="register" class="page auth">
+
+  <div class="auth-logo">
+    READ<span>MITH</span>
+  </div>
+
+  <div class="auth-card">
+
+    <h1>Create Account</h1>
+
+    <p>
+      Create your free demo account.
+    </p>
+
+    <div class="field">
+      <label>Name</label>
+      <input id="regName" type="text" placeholder="Your name">
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="regEmail" type="email" placeholder="Your email">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input id="regPassword" type="password" placeholder="Create password">
+    </div>
+
+    <div class="field">
+      <label>Referral Code</label>
+      <input id="regReferral" type="text" placeholder="Optional referral code">
+    </div>
+
+    <button class="primary" onclick="register()">
+      Register
+    </button>
+
+    <button class="secondary" onclick="go('login')">
+      Already have an account?
+    </button>
+
+  </div>
 
 </section>
 
 </div>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+  <button class="nav-item active" data-page="home" onclick="go('home')">
+    <div class="icon">🏠</div>
+    Home
+  </button>
+
+  <button class="nav-item" data-page="games" onclick="go('games')">
+    <div class="icon">🎮</div>
+    Games
+  </button>
+
+  <button class="nav-item" data-page="referral" onclick="go('referral')">
+    <div class="icon">👥</div>
+    Invite
+  </button>
+
+  <button class="nav-item" data-page="wallet" onclick="go('wallet')">
+    <div class="icon">💰</div>
+    Wallet
+  </button>
+
+  <button class="nav-item" data-page="profile" onclick="go('profile')">
+    <div class="icon">👤</div>
+    Profile
+  </button>
+
+</nav>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeModal()">×</button>
+
+    <h2 id="modalTitle">
+      Demo
+    </h2>
+
+    <p id="modalText">
+      This is a demo feature.
+    </p>
+
+    <button class="primary" onclick="closeModal()">
+      Continue
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+  Copied!
+</div>
+
 
 <script>
 
-const ADMIN_EMAIL="admin@demo.com";
-const ADMIN_PASSWORD="admin123";
+/* =========================
+   DATA
+========================= */
 
-function getUsers(){
-  return JSON.parse(localStorage.getItem("readmith_users") || "[]");
+const USERS_KEY = "readmith_demo_users";
+const CURRENT_KEY = "readmith_demo_current";
+
+let users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+
+let currentUser =
+  JSON.parse(localStorage.getItem(CURRENT_KEY) || "null");
+
+
+/* =========================
+   ROUTER
+========================= */
+
+function go(page){
+
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  const target=document.getElementById(page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-item").forEach(item=>{
+    item.classList.remove("active");
+
+    if(item.dataset.page===page){
+      item.classList.add("active");
+    }
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  updateUI();
 }
 
-function saveUsers(users){
-  localStorage.setItem("readmith_users",JSON.stringify(users));
+
+/* =========================
+   URL REFERRAL
+========================= */
+
+function getReferralFromURL(){
+
+  const hash=window.location.hash;
+
+  if(hash.includes("?")){
+
+    const query=hash.split("?")[1];
+
+    const params=new URLSearchParams(query);
+
+    return params.get("referCode") || "";
+  }
+
+  return "";
 }
 
-function makeCode(){
-  return Math.floor(100000+Math.random()*900000).toString();
-}
+
+/* =========================
+   REGISTER
+========================= */
 
 function register(){
 
   const name=document.getElementById("regName").value.trim();
   const email=document.getElementById("regEmail").value.trim().toLowerCase();
   const password=document.getElementById("regPassword").value;
+  const referral=document.getElementById("regReferral").value.trim();
 
   if(!name || !email || !password){
-    alert("Please fill all fields.");
+
+    showToast("Please fill all fields");
     return;
   }
-
-  let users=getUsers();
 
   if(users.some(u=>u.email===email)){
-    alert("This demo email already exists.");
+
+    showToast("Account already exists");
     return;
   }
+
+  const code=
+    Math.floor(100000+Math.random()*900000).toString();
 
   const user={
     id:Date.now(),
-    name:name,
-    email:email,
-    password:password,
-    referralCode:makeCode(),
-    referrals:0,
+    name,
+    email,
+    password,
+    code,
     balance:100,
+    referrals:0,
+    referralReward:0,
+    referredBy:referral || getReferralFromURL(),
     transactions:[
       {
-        date:new Date().toLocaleDateString(),
-        type:"Demo Welcome Balance",
-        amount:"+$100"
+        name:"Welcome Demo Credit",
+        amount:100,
+        date:new Date().toLocaleDateString()
       }
     ]
   };
 
+  /* referral */
+
+  if(user.referredBy){
+
+    const parent=users.find(
+      u=>u.code===user.referredBy
+    );
+
+    if(parent){
+
+      parent.referrals+=1;
+      parent.referralReward+=5;
+
+      parent.transactions.unshift({
+        name:"Referral Demo Reward",
+        amount:5,
+        date:new Date().toLocaleDateString()
+      });
+
+      parent.balance+=5;
+    }
+  }
+
   users.push(user);
-  saveUsers(users);
 
-  alert("Demo account created successfully.");
+  localStorage.setItem(
+    USERS_KEY,
+    JSON.stringify(users)
+  );
 
-  document.getElementById("regName").value="";
-  document.getElementById("regEmail").value="";
-  document.getElementById("regPassword").value="";
+  currentUser=user;
 
-  loginWithUser(user);
+  localStorage.setItem(
+    CURRENT_KEY,
+    JSON.stringify(currentUser)
+  );
+
+  showToast("Account created");
+
+  setTimeout(()=>{
+    go("home");
+  },500);
 }
+
+
+/* =========================
+   LOGIN
+========================= */
 
 function login(){
 
-  const email=document.getElementById("loginEmail").value.trim().toLowerCase();
-  const password=document.getElementById("loginPassword").value;
+  const email=document
+    .getElementById("loginEmail")
+    .value
+    .trim()
+    .toLowerCase();
 
-  if(email===ADMIN_EMAIL && password===ADMIN_PASSWORD){
+  const password=document
+    .getElementById("loginPassword")
+    .value;
 
-    localStorage.setItem("readmith_current","ADMIN");
-    openApp(true);
-    return;
-  }
-
-  const user=getUsers().find(
+  const user=users.find(
     u=>u.email===email && u.password===password
   );
 
   if(!user){
-    alert("Invalid demo login.");
+
+    showToast("Invalid demo login");
     return;
   }
 
-  loginWithUser(user);
-}
+  currentUser=user;
 
-function loginWithUser(user){
-  localStorage.setItem("readmith_current",String(user.id));
-  openApp(false);
-}
-
-function openApp(isAdmin){
-
-  document.getElementById("auth").classList.add("hidden");
-  document.getElementById("app").classList.remove("hidden");
-  document.getElementById("logoutBtn").classList.remove("hidden");
-
-  if(isAdmin){
-
-    document.getElementById("adminNav").classList.remove("hidden");
-    showPage("admin");
-    loadAdmin();
-
-  }else{
-
-    document.getElementById("adminNav").classList.add("hidden");
-
-    const id=Number(localStorage.getItem("readmith_current"));
-    const user=getUsers().find(u=>u.id===id);
-
-    if(user) loadUser(user);
-
-    showPage("dashboard");
-  }
-}
-
-function loadUser(user){
-
-  document.getElementById("userName").textContent=user.name;
-  document.getElementById("userEmail").textContent=user.email;
-  document.getElementById("userCode").textContent=user.referralCode;
-  document.getElementById("balance").textContent="$"+user.balance;
-  document.getElementById("refCount").textContent=user.referrals;
-
-  const link=location.origin+location.pathname+
-    "?referCode="+user.referralCode;
-
-  document.getElementById("refLink").textContent=link;
-
-  const body=document.getElementById("transactionBody");
-  body.innerHTML="";
-
-  (user.transactions||[]).forEach(t=>{
-
-    body.innerHTML+=`
-      <tr>
-        <td>${t.date}</td>
-        <td>${t.type}</td>
-        <td>${t.amount}</td>
-      </tr>
-    `;
-  });
-}
-
-function showPage(page){
-
-  document.querySelectorAll(".page").forEach(
-    p=>p.classList.add("hidden")
+  localStorage.setItem(
+    CURRENT_KEY,
+    JSON.stringify(user)
   );
 
-  document.getElementById(page).classList.remove("hidden");
+  showToast("Login successful");
 
-  const id=localStorage.getItem("readmith_current");
-
-  if(id && id!=="ADMIN"){
-
-    const user=getUsers().find(u=>u.id===Number(id));
-
-    if(user) loadUser(user);
-  }
-
-  if(page==="admin") loadAdmin();
+  setTimeout(()=>{
+    go("home");
+  },500);
 }
 
-function copyReferral(){
 
-  const link=document.getElementById("refLink").textContent;
-
-  navigator.clipboard.writeText(link).then(()=>{
-
-    document.getElementById("copyMsg").textContent=
-      "Referral link copied.";
-
-  }).catch(()=>{
-
-    alert(link);
-
-  });
-}
-
-function loadAdmin(){
-
-  const users=getUsers();
-
-  document.getElementById("totalUsers").textContent=users.length;
-
-  const refs=users.reduce(
-    (sum,u)=>sum+(u.referrals||0),0
-  );
-
-  const balance=users.reduce(
-    (sum,u)=>sum+(u.balance||0),0
-  );
-
-  document.getElementById("totalRefs").textContent=refs;
-  document.getElementById("totalBalance").textContent="$"+balance;
-
-  const table=document.getElementById("userTable");
-
-  table.innerHTML="";
-
-  users.forEach(u=>{
-
-    table.innerHTML+=`
-      <tr>
-        <td>${u.name}</td>
-        <td>${u.email}</td>
-        <td>${u.referralCode}</td>
-      </tr>
-    `;
-
-  });
-}
-
-function clearDemoData(){
-
-  if(confirm("Delete all demo users and data?")){
-
-    localStorage.removeItem("readmith_users");
-    localStorage.removeItem("readmith_current");
-
-    location.reload();
-  }
-}
+/* =========================
+   LOGOUT
+========================= */
 
 function logout(){
 
-  localStorage.removeItem("readmith_current");
-  location.reload();
+  currentUser=null;
+
+  localStorage.removeItem(CURRENT_KEY);
+
+  showToast("Logged out");
+
+  setTimeout(()=>{
+    go("login");
+  },400);
 }
 
-window.onload=function(){
 
-  const current=localStorage.getItem("readmith_current");
+/* =========================
+   UPDATE UI
+========================= */
 
-  if(current==="ADMIN"){
-    openApp(true);
+function updateUI(){
+
+  if(!currentUser){
+
+    return;
   }
-  else if(current){
 
-    const user=getUsers().find(
-      u=>u.id===Number(current)
+  document.getElementById("balance").textContent=
+    Number(currentUser.balance).toFixed(2);
+
+  document.getElementById("walletBalance").textContent=
+    Number(currentUser.balance).toFixed(2);
+
+  document.getElementById("profileName").textContent=
+    currentUser.name;
+
+  document.getElementById("profileEmail").textContent=
+    currentUser.email;
+
+  document.getElementById("avatar").textContent=
+    currentUser.name.charAt(0).toUpperCase();
+
+  document.getElementById("refCount").textContent=
+    currentUser.referrals;
+
+  document.getElementById("refReward").textContent=
+    Number(currentUser.referralReward).toFixed(2);
+
+  document.getElementById("myCode").textContent=
+    currentUser.code;
+
+  const link=
+    location.origin+
+    location.pathname+
+    "#/register?referCode="+
+    currentUser.code+
+    "&inviteType=INVITE_ROULETTE";
+
+  document.getElementById("refLink").textContent=link;
+
+  renderTransactions();
+}
+
+
+/* =========================
+   TRANSACTIONS
+========================= */
+
+function renderTransactions(){
+
+  const list=document.getElementById(
+    "transactionsList"
+  );
+
+  const walletList=document.getElementById(
+    "walletTransactions"
+  );
+
+  if(!currentUser) return;
+
+  const tx=currentUser.transactions || [];
+
+  let html="";
+
+  if(tx.length===0){
+
+    html=
+      "<div class='demo-notice'>No demo transactions yet.</div>";
+
+  }else{
+
+    tx.forEach(item=>{
+
+      html+=`
+
+        <div class="transaction">
+
+          <div class="transaction-left">
+
+            <div class="tx-icon">
+              🎁
+            </div>
+
+            <div>
+              <div class="tx-name">
+                ${escapeHTML(item.name)}
+              </div>
+
+              <div class="tx-date">
+                ${escapeHTML(item.date)}
+              </div>
+            </div>
+
+          </div>
+
+          <div class="tx-amount">
+            +$${Number(item.amount).toFixed(2)}
+          </div>
+
+        </div>
+
+      `;
+    });
+  }
+
+  list.innerHTML=html;
+  walletList.innerHTML=html;
+}
+
+
+/* =========================
+   BONUS
+========================= */
+
+function claimBonus(){
+
+  if(!currentUser){
+
+    go("login");
+    return;
+  }
+
+  currentUser.balance+=2;
+
+  currentUser.transactions.unshift({
+
+    name:"Daily Demo Bonus",
+
+    amount:2,
+
+    date:new Date().toLocaleDateString()
+
+  });
+
+  saveCurrentUser();
+
+  showToast("$2 demo bonus added");
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+function openGame(name){
+
+  showModal(
+    name,
+    "This is a fictional demo game interface. No real-money wagering, deposits or withdrawals are available."
+  );
+}
+
+
+/* =========================
+   NOTICE
+========================= */
+
+function showNotice(){
+
+  showModal(
+    "Demo Feature",
+    "This feature is part of the visual demo. Real-money payments and gambling functionality are not connected."
+  );
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function showModal(title,text){
+
+  document.getElementById("modalTitle")
+    .textContent=title;
+
+  document.getElementById("modalText")
+    .textContent=text;
+
+  document.getElementById("modal")
+    .classList.add("show");
+}
+
+function closeModal(){
+
+  document.getElementById("modal")
+    .classList.remove("show");
+}
+
+
+/* =========================
+   COPY REFERRAL
+========================= */
+
+async function copyReferral(){
+
+  if(!currentUser) return;
+
+  const link=
+    location.origin+
+    location.pathname+
+    "#/register?referCode="+
+    currentUser.code+
+    "&inviteType=INVITE_ROULETTE";
+
+  try{
+
+    await navigator.clipboard.writeText(link);
+
+    showToast("Referral link copied");
+
+  }catch(e){
+
+    showToast("Copy not supported");
+  }
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveCurrentUser(){
+
+  const index=users.findIndex(
+    u=>u.id===currentUser.id
+  );
+
+  if(index!==-1){
+
+    users[index]=currentUser;
+
+    localStorage.setItem(
+      USERS_KEY,
+      JSON.stringify(users)
     );
-
-    if(user) openApp(false);
-    else localStorage.removeItem("readmith_current");
   }
-};
+
+  localStorage.setItem(
+    CURRENT_KEY,
+    JSON.stringify(currentUser)
+  );
+
+  updateUI();
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message){
+
+  const toast=
+    document.getElementById("toast");
+
+  toast.textContent=message;
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },1800);
+}
+
+
+/* =========================
+   SECURITY DISPLAY
+========================= */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+/* =========================
+   STARTUP
+========================= */
+
+const urlReferral=getReferralFromURL();
+
+if(urlReferral){
+
+  document.getElementById("regReferral")
+    .value=urlReferral;
+
+  go("register");
+
+}else if(currentUser){
+
+  go("home");
+
+}else{
+
+  go("home");
+}
 
 </script>
 
 </body>
-  </html>
+      </html>
