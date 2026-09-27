@@ -2,30 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Readmith Demo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Readmith Demo Games</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0;
+  padding:0
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b1020;
-  color:#fff;
-  min-height:100vh;
-}
-
-button,input{
-  font:inherit;
+  font-family:Arial,sans-serif;
+  background:#070b16;
+  color:#fff
 }
 
 button{
-  cursor:pointer;
+  font:inherit;
   border:0;
+  cursor:pointer
 }
 
 .app{
@@ -33,531 +29,327 @@ button{
   min-height:100vh;
   margin:auto;
   background:
-    radial-gradient(circle at 50% -10%,#263b78 0,#11182d 32%,#080c18 70%);
-  padding-bottom:78px;
+    radial-gradient(circle at 50% -10%,#293d7b,#10172b 34%,#070b16 75%);
+  padding-bottom:82px
 }
-
-/* HEADER */
 
 .header{
   height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 16px;
   position:sticky;
   top:0;
   z-index:20;
-  background:rgba(8,12,24,.92);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+  background:rgba(7,11,22,.94);
   backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid #202943
 }
 
 .logo{
-  font-size:23px;
+  font-size:22px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:2px
 }
 
 .logo span{
-  color:#ffd33d;
+  color:#ffd43b
 }
 
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.header-btn{
+.header button{
   width:38px;
   height:38px;
   border-radius:12px;
-  background:#171f38;
-  color:white;
-  font-size:18px;
+  background:#18213a;
+  color:#fff
 }
-
-/* PAGES */
 
 .page{
   display:none;
-  padding:16px;
+  padding:16px
 }
 
 .page.active{
-  display:block;
+  display:block
 }
 
-/* HERO */
+.notice{
+  padding:10px 13px;
+  border-radius:12px;
+  background:#332b12;
+  color:#ffe88a;
+  font-size:11px;
+  margin-bottom:15px
+}
 
 .hero{
-  position:relative;
-  min-height:190px;
+  padding:22px 18px;
   border-radius:22px;
-  overflow:hidden;
-  padding:24px 20px;
-  margin-bottom:18px;
-  background:
-    linear-gradient(120deg,#6d32e9,#254bd7 55%,#13a5d7);
-  box-shadow:0 15px 35px rgba(0,0,0,.3);
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:190px;
-  height:190px;
-  right:-55px;
-  top:-50px;
-  border-radius:50%;
-  background:rgba(255,255,255,.12);
+  background:linear-gradient(120deg,#6530e7,#2757d9 58%,#0fa7c7);
+  margin-bottom:16px
 }
 
 .hero h1{
-  position:relative;
-  z-index:2;
-  font-size:29px;
-  margin-bottom:8px;
+  font-size:28px
 }
 
 .hero p{
-  position:relative;
-  z-index:2;
-  color:#e7ebff;
-  line-height:1.5;
-  font-size:14px;
-  max-width:280px;
-}
-
-.hero-btn{
-  position:relative;
-  z-index:3;
-  margin-top:18px;
-  padding:11px 18px;
-  border-radius:12px;
-  background:#ffd43b;
-  color:#17120a;
-  font-weight:800;
-}
-
-/* DEMO NOTICE */
-
-.demo-notice{
-  padding:11px 14px;
-  border-radius:13px;
-  background:rgba(255,211,61,.09);
-  border:1px solid rgba(255,211,61,.25);
-  color:#ffe98b;
-  font-size:12px;
-  margin-bottom:16px;
-}
-
-/* BALANCE */
-
-.balance-card{
-  background:linear-gradient(135deg,#151f3b,#10182d);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:18px;
-}
-
-.balance-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.balance-label{
-  color:#aeb7d0;
+  color:#e4eaff;
   font-size:13px;
+  line-height:1.5;
+  margin-top:7px
+}
+
+.btn{
+  width:100%;
+  padding:13px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#6c3cf0,#3477ed);
+  color:#fff;
+  font-weight:800;
+  margin-top:12px
+}
+
+.btn.gold{
+  background:#ffd43b;
+  color:#17120a
 }
 
 .balance{
-  font-size:31px;
+  padding:18px;
+  border-radius:20px;
+  background:#131c34;
+  border:1px solid #27314b;
+  margin-bottom:18px
+}
+
+.label{
+  color:#9ca8c3;
+  font-size:12px
+}
+
+.money{
+  font-size:30px;
   font-weight:900;
-  margin-top:5px;
+  margin-top:4px
 }
 
-.balance small{
-  font-size:14px;
-  color:#aeb7d0;
-}
-
-.balance-icon{
-  width:48px;
-  height:48px;
-  border-radius:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#ffd43b,#ff9e2c);
-  color:#17120a;
-  font-size:23px;
-}
-
-/* SECTION */
-
-.section-title{
+.section{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:20px 0 12px;
+  margin:18px 0 11px
 }
 
-.section-title h2{
-  font-size:18px;
+.section h2{
+  font-size:18px
 }
 
-.section-title span{
-  color:#8e9ab8;
-  font-size:12px;
-}
-
-/* GAME CATEGORIES */
-
-.categories{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.categories::-webkit-scrollbar{
-  display:none;
-}
-
-.category{
-  min-width:76px;
-  padding:12px 8px;
-  text-align:center;
-  border-radius:14px;
-  background:#151e36;
-  border:1px solid rgba(255,255,255,.06);
-  color:#b9c2d9;
+.section span{
   font-size:11px;
+  color:#8793ad
 }
-
-.category.active{
-  background:linear-gradient(135deg,#5c36ef,#3568e9);
-  color:#fff;
-}
-
-.category-icon{
-  font-size:22px;
-  margin-bottom:6px;
-}
-
-/* GAME GRID */
 
 .games{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  grid-template-columns:1fr 1fr;
+  gap:12px
 }
 
 .game{
-  min-height:145px;
-  border-radius:18px;
   overflow:hidden;
-  position:relative;
-  background:#171f37;
-  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  background:#151e35;
+  border:1px solid #26304a
 }
 
-.game-art{
-  height:100px;
+.art{
+  height:105px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:48px;
+  font-size:48px
 }
 
-.game:nth-child(1) .game-art{
-  background:linear-gradient(135deg,#5426d9,#c52cff);
+.g1{
+  background:linear-gradient(135deg,#5723d9,#c82cff)
 }
 
-.game:nth-child(2) .game-art{
-  background:linear-gradient(135deg,#087a9e,#19d1b1);
+.g2{
+  background:linear-gradient(135deg,#087b9d,#19cbaa)
 }
 
-.game:nth-child(3) .game-art{
-  background:linear-gradient(135deg,#e65a22,#f3b52f);
+.g3{
+  background:linear-gradient(135deg,#e65b22,#f0b62d)
 }
 
-.game:nth-child(4) .game-art{
-  background:linear-gradient(135deg,#ba245c,#ff557e);
+.g4{
+  background:linear-gradient(135deg,#b6225c,#ff557e)
 }
 
-.game-info{
-  padding:9px 11px;
+.g5{
+  background:linear-gradient(135deg,#2b5bbd,#35c5e9)
 }
 
-.game-name{
+.g6{
+  background:linear-gradient(135deg,#6841d9,#e84bca)
+}
+
+.ginfo{
+  padding:10px
+}
+
+.gname{
   font-size:13px;
-  font-weight:700;
+  font-weight:800
 }
 
-.game-tag{
-  color:#8995b4;
+.gtag{
   font-size:10px;
-  margin-top:3px;
+  color:#8490aa;
+  margin-top:3px
 }
 
-/* PROMO */
+.game-page{
+  text-align:center
+}
 
-.promo{
+.game-page h1{
+  font-size:24px
+}
+
+.game-page .sub{
+  color:#8d99b3;
+  font-size:12px;
+  margin-top:5px
+}
+
+.gamebox{
   margin-top:18px;
-  border-radius:18px;
-  padding:17px;
-  background:linear-gradient(135deg,#1c2d5a,#202a4a);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.promo h3{
-  font-size:17px;
-}
-
-.promo p{
-  color:#9da9c6;
-  font-size:12px;
-  margin-top:5px;
-}
-
-/* BUTTONS */
-
-.primary{
-  width:100%;
-  padding:13px;
-  margin-top:14px;
-  border-radius:13px;
-  background:linear-gradient(135deg,#6b3df0,#3975ed);
-  color:white;
-  font-weight:800;
-}
-
-.secondary{
-  width:100%;
-  padding:13px;
-  margin-top:10px;
-  border-radius:13px;
-  background:#1a233d;
-  color:white;
-  border:1px solid rgba(255,255,255,.08);
-}
-
-/* FORMS */
-
-.auth{
-  padding-top:35px;
-}
-
-.auth-logo{
-  text-align:center;
-  font-size:31px;
-  font-weight:900;
-  letter-spacing:2px;
-  margin-bottom:28px;
-}
-
-.auth-logo span{
-  color:#ffd43b;
-}
-
-.auth-card{
-  background:#121a30;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:22px;
-  padding:22px;
-}
-
-.auth-card h1{
-  font-size:23px;
-  margin-bottom:6px;
-}
-
-.auth-card p{
-  color:#8e9ab7;
-  font-size:13px;
-  margin-bottom:20px;
-}
-
-.field{
-  margin-bottom:13px;
-}
-
-.field label{
-  display:block;
-  color:#aeb7d0;
-  font-size:12px;
-  margin-bottom:7px;
-}
-
-.field input{
-  width:100%;
-  padding:13px;
-  border-radius:12px;
-  outline:none;
-  border:1px solid #28334f;
-  background:#0b1121;
-  color:white;
-}
-
-.field input:focus{
-  border-color:#5d64f4;
-}
-
-/* REFERRAL */
-
-.ref-card{
-  background:linear-gradient(135deg,#1c2860,#171d3d);
-  border-radius:20px;
   padding:20px;
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.ref-code{
-  margin-top:15px;
-  background:#090f1e;
-  border-radius:12px;
-  padding:14px;
-  font-weight:800;
-  letter-spacing:1px;
-  text-align:center;
-  color:#ffd43b;
-  word-break:break-all;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:15px;
-}
-
-.stat{
-  background:#151f38;
-  border-radius:14px;
-  padding:14px;
-}
-
-.stat b{
-  display:block;
-  font-size:21px;
-}
-
-.stat span{
-  color:#8995b2;
-  font-size:11px;
-}
-
-/* TRANSACTIONS */
-
-.transaction{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.transaction-left{
-  display:flex;
-  align-items:center;
-  gap:11px;
-}
-
-.tx-icon{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#192440;
-}
-
-.tx-name{
-  font-size:13px;
-  font-weight:700;
-}
-
-.tx-date{
-  font-size:10px;
-  color:#77839e;
-  margin-top:3px;
-}
-
-.tx-amount{
-  font-weight:800;
-  color:#6ee7a5;
-}
-
-/* PROFILE */
-
-.profile-head{
-  text-align:center;
-  padding:15px 0 20px;
-}
-
-.avatar{
-  width:76px;
-  height:76px;
-  margin:auto;
-  border-radius:50%;
-  background:linear-gradient(135deg,#6944ef,#20b9ee);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  font-weight:900;
-  border:4px solid #202a48;
-}
-
-.profile-name{
-  font-size:20px;
-  font-weight:800;
-  margin-top:10px;
-}
-
-.profile-email{
-  color:#8792ac;
-  font-size:12px;
-  margin-top:4px;
-}
-
-.menu{
-  margin-top:10px;
+  border-radius:22px;
   background:#121a30;
-  border-radius:18px;
-  overflow:hidden;
+  border:1px solid #27314b
 }
 
-.menu-item{
-  width:100%;
-  padding:16px;
+.wheel{
+  width:235px;
+  height:235px;
+  margin:8px auto 18px;
+  border-radius:50%;
+  border:8px solid #ffd43b;
+  background:
+    conic-gradient(
+      #7b36e9 0 45deg,
+      #20a6d4 45deg 90deg,
+      #e84c7b 90deg 135deg,
+      #f0a72c 135deg 180deg,
+      #31b86c 180deg 225deg,
+      #7b36e9 225deg 270deg,
+      #20a6d4 270deg 315deg,
+      #e84c7b 315deg 360deg
+    );
+  position:relative;
+  transition:transform 3s cubic-bezier(.12,.75,.15,1);
+  box-shadow:0 0 35px #000
+}
+
+.wheel:after{
+  content:"DEMO";
+  position:absolute;
+  inset:78px;
+  border-radius:50%;
+  background:#10172b;
+  border:4px solid #ffd43b;
   display:flex;
   align-items:center;
-  gap:13px;
-  background:transparent;
+  justify-content:center;
+  font-weight:900
+}
+
+.pointer{
+  width:0;
+  height:0;
+  border-left:13px solid transparent;
+  border-right:13px solid transparent;
+  border-top:28px solid #fff;
+  margin:-4px auto 10px;
+  filter:drop-shadow(0 2px 3px #000)
+}
+
+.chests{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:15px
+}
+
+.chest{
+  height:105px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#5d32d7,#252e61);
   color:#fff;
-  text-align:left;
-  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:38px;
+  border:1px solid #39456d
 }
 
-.menu-item:last-child{
-  border-bottom:0;
+.chest.open{
+  background:#163e42
 }
 
-.menu-item span:last-child{
-  margin-left:auto;
-  color:#6f7c9b;
+.chest small{
+  display:block;
+  font-size:10px;
+  color:#b8c4de
 }
 
-/* BOTTOM NAV */
+.tap-area{
+  height:220px;
+  border-radius:20px;
+  background:
+    radial-gradient(circle,#3b2c88,#151d39);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:15px
+}
 
-.bottom-nav{
+.star{
+  font-size:100px;
+  transition:.15s
+}
+
+.star:active{
+  transform:scale(.8)
+}
+
+.candy-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:15px
+}
+
+.candy{
+  height:64px;
+  border-radius:14px;
+  background:#202b4a;
+  font-size:30px
+}
+
+.candy.done{
+  opacity:.35
+}
+
+.result{
+  min-height:23px;
+  margin-top:13px;
+  color:#ffd43b;
+  font-weight:800
+}
+
+.nav{
   position:fixed;
   bottom:0;
   left:50%;
@@ -565,120 +357,114 @@ button{
   width:100%;
   max-width:480px;
   height:70px;
-  background:rgba(8,12,24,.97);
-  backdrop-filter:blur(14px);
-  border-top:1px solid rgba(255,255,255,.08);
   display:flex;
-  z-index:50;
+  background:rgba(7,11,22,.97);
+  border-top:1px solid #222c46;
+  z-index:50
 }
 
-.nav-item{
+.nav button{
   flex:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
   background:transparent;
-  color:#69758f;
-  font-size:10px;
+  color:#697691;
+  font-size:10px
 }
 
-.nav-item .icon{
+.nav b{
+  display:block;
   font-size:21px;
+  margin-bottom:3px
 }
 
-.nav-item.active{
+.nav button.active{
+  color:#ffd43b
+}
+
+.ref{
+  padding:18px;
+  border-radius:20px;
+  background:#17213b;
+  border:1px solid #2b3652
+}
+
+.refcode{
+  padding:13px;
+  margin-top:12px;
+  background:#090e1c;
+  border-radius:12px;
   color:#ffd43b;
+  text-align:center;
+  font-weight:800;
+  word-break:break-all
 }
 
-/* MODAL */
+.tx{
+  display:flex;
+  justify-content:space-between;
+  padding:13px 0;
+  border-bottom:1px solid #222c43;
+  font-size:12px
+}
+
+.tx small{
+  display:block;
+  color:#71809d;
+  margin-top:3px
+}
+
+.plus{
+  color:#6ee7a5;
+  font-weight:800
+}
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
+  background:#000b;
   z-index:100;
-  background:rgba(0,0,0,.72);
-  align-items:flex-end;
-  justify-content:center;
+  align-items:flex-end
 }
 
 .modal.show{
-  display:flex;
+  display:flex
 }
 
-.modal-box{
+.modalbox{
   width:100%;
   max-width:480px;
+  margin:auto auto 0;
   background:#11192e;
-  border-radius:24px 24px 0 0;
-  padding:22px;
-  border-top:1px solid rgba(255,255,255,.1);
-}
-
-.modal-box h2{
-  margin-bottom:8px;
-}
-
-.modal-box p{
-  color:#8f9ab5;
-  font-size:13px;
-  line-height:1.5;
+  border-radius:23px 23px 0 0;
+  padding:22px
 }
 
 .close{
   float:right;
-  background:#1d2740;
-  color:white;
   width:34px;
   height:34px;
   border-radius:10px;
+  background:#202a44;
+  color:#fff
 }
-
-/* TOAST */
 
 .toast{
   position:fixed;
   left:50%;
-  bottom:90px;
-  transform:translateX(-50%) translateY(20px);
+  bottom:88px;
+  transform:translateX(-50%);
   background:#fff;
   color:#111;
-  padding:11px 16px;
+  padding:10px 15px;
   border-radius:12px;
   font-size:12px;
   opacity:0;
-  pointer-events:none;
-  transition:.25s;
   z-index:200;
-  white-space:nowrap;
+  transition:.2s
 }
 
 .toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-
-/* DESKTOP */
-
-@media(min-width:700px){
-  body{
-    padding:20px 0;
-    background:#050812;
-  }
-
-  .app{
-    border-radius:24px;
-    overflow:hidden;
-    box-shadow:0 20px 70px rgba(0,0,0,.45);
-  }
-
-  .bottom-nav{
-    bottom:20px;
-    border-radius:18px;
-    width:480px;
-  }
+  opacity:1
 }
 </style>
 </head>
@@ -688,12 +474,13 @@ button{
 <div class="app">
 
 <header class="header">
-  <div class="logo">READ<span>MITH</span></div>
 
-  <div class="header-actions">
-    <button class="header-btn" onclick="showNotice()">🔔</button>
-    <button class="header-btn" onclick="go('profile')">👤</button>
+  <div class="logo">
+    READ<span>MITH</span>
   </div>
+
+  <button onclick="showInfo()">ⓘ</button>
+
 </header>
 
 
@@ -701,100 +488,96 @@ button{
 
 <section id="home" class="page active">
 
-  <div class="demo-notice">
-    ⚡ DEMO MODE — All balance and game activity on this website is fictional.
+  <div class="notice">
+    ⚡ DEMO MODE — games use fictional points only.
   </div>
 
   <div class="hero">
+
     <h1>Play & Explore</h1>
-    <p>Enjoy a modern gaming-style demo experience with rewards, games and referral features.</p>
-    <button class="hero-btn" onclick="go('games')">Explore Games</button>
+
+    <p>
+      Interactive mini-games with animations,
+      demo rewards and game history.
+    </p>
+
+    <button class="btn gold" onclick="show('games')">
+      Play Games
+    </button>
+
   </div>
 
-  <div class="balance-card">
-    <div class="balance-top">
-      <div>
-        <div class="balance-label">Demo Balance</div>
-        <div class="balance">$<span id="balance">100.00</span></div>
-      </div>
+  <div class="balance">
 
-      <div class="balance-icon">💎</div>
+    <div class="label">
+      Demo Balance
     </div>
+
+    <div class="money">
+      $<span id="balance">100.00</span>
+    </div>
+
   </div>
 
-  <div class="section-title">
-    <h2>Categories</h2>
-    <span>Explore</span>
-  </div>
-
-  <div class="categories">
-    <button class="category active">
-      <div class="category-icon">🔥</div>
-      Popular
-    </button>
-
-    <button class="category">
-      <div class="category-icon">🎯</div>
-      Arcade
-    </button>
-
-    <button class="category">
-      <div class="category-icon">🧩</div>
-      Puzzle
-    </button>
-
-    <button class="category">
-      <div class="category-icon">🏆</div>
-      Rewards
-    </button>
-  </div>
-
-  <div class="section-title">
+  <div class="section">
     <h2>Featured Games</h2>
-    <span onclick="go('games')">View all</span>
+    <span>Demo only</span>
   </div>
 
   <div class="games">
 
-    <div class="game" onclick="openGame('Lucky Wheel')">
-      <div class="game-art">🎡</div>
-      <div class="game-info">
-        <div class="game-name">Lucky Wheel</div>
-        <div class="game-tag">Demo game</div>
+    <div class="game" onclick="openGame('wheel')">
+
+      <div class="art g1">🎡</div>
+
+      <div class="ginfo">
+        <div class="gname">Lucky Wheel</div>
+        <div class="gtag">Spin demo</div>
       </div>
+
     </div>
 
-    <div class="game" onclick="openGame('Treasure Box')">
-      <div class="game-art">💎</div>
-      <div class="game-info">
-        <div class="game-name">Treasure Box</div>
-        <div class="game-tag">Demo game</div>
+
+    <div class="game" onclick="openGame('chest')">
+
+      <div class="art g2">💎</div>
+
+      <div class="ginfo">
+        <div class="gname">Treasure Box</div>
+        <div class="gtag">Pick a box</div>
       </div>
+
     </div>
 
-    <div class="game" onclick="openGame('Golden Stars')">
-      <div class="game-art">⭐</div>
-      <div class="game-info">
-        <div class="game-name">Golden Stars</div>
-        <div class="game-tag">Demo game</div>
+
+    <div class="game" onclick="openGame('star')">
+
+      <div class="art g3">⭐</div>
+
+      <div class="ginfo">
+        <div class="gname">Star Tap</div>
+        <div class="gtag">Tap challenge</div>
       </div>
+
     </div>
 
-    <div class="game" onclick="openGame('Candy Rush')">
-      <div class="game-art">🍬</div>
-      <div class="game-info">
-        <div class="game-name">Candy Rush</div>
-        <div class="game-tag">Demo game</div>
+
+    <div class="game" onclick="openGame('candy')">
+
+      <div class="art g4">🍬</div>
+
+      <div class="ginfo">
+        <div class="gname">Candy Rush</div>
+        <div class="gtag">Tap candies</div>
       </div>
+
     </div>
 
   </div>
 
-  <div class="promo">
-    <h3>🎁 Daily Demo Bonus</h3>
-    <p>Open the demo app every day and explore the reward interface.</p>
-    <button class="primary" onclick="claimBonus()">Claim Demo Bonus</button>
-  </div>
+  <button class="btn" onclick="claimBonus()">
+    🎁 Claim Daily Demo Bonus
+  </button>
 
 </section>
 
@@ -803,62 +586,63 @@ button{
 
 <section id="games" class="page">
 
-  <div class="section-title">
+  <div class="section">
     <h2>Games</h2>
-    <span>Demo only</span>
+    <span>Playable demo</span>
   </div>
 
-  <div class="demo-notice">
-    🎮 These are interface demonstrations only. No real-money wagering is available.
+  <div class="notice">
+    🎮 Tap a game and play it.
+    Rewards are fictional demo credits.
   </div>
 
   <div class="games">
 
-    <div class="game" onclick="openGame('Lucky Wheel')">
-      <div class="game-art">🎡</div>
-      <div class="game-info">
-        <div class="game-name">Lucky Wheel</div>
-        <div class="game-tag">Play Demo</div>
+    <div class="game" onclick="openGame('wheel')">
+      <div class="art g1">🎡</div>
+      <div class="ginfo">
+        <div class="gname">Lucky Wheel</div>
+        <div class="gtag">Spin & win demo points</div>
       </div>
     </div>
 
-    <div class="game" onclick="openGame('Treasure Box')">
-      <div class="game-art">💎</div>
-      <div class="game-info">
-        <div class="game-name">Treasure Box</div>
-        <div class="game-tag">Play Demo</div>
+    <div class="game" onclick="openGame('chest')">
+      <div class="art g2">💎</div>
+      <div class="ginfo">
+        <div class="gname">Treasure Box</div>
+        <div class="gtag">Open one box</div>
       </div>
     </div>
 
-    <div class="game" onclick="openGame('Golden Stars')">
-      <div class="game-art">⭐</div>
-      <div class="game-info">
-        <div class="game-name">Golden Stars</div>
-        <div class="game-tag">Play Demo</div>
+    <div class="game" onclick="openGame('star')">
+      <div class="art g3">⭐</div>
+      <div class="ginfo">
+        <div class="gname">Star Tap</div>
+        <div class="gtag">10 tap challenge</div>
       </div>
     </div>
 
-    <div class="game" onclick="openGame('Candy Rush')">
-      <div class="game-art">🍬</div>
-      <div class="game-info">
-        <div class="game-name">Candy Rush</div>
-        <div class="game-tag">Play Demo</div>
+    <div class="game" onclick="openGame('candy')">
+      <div class="art g4">🍬</div>
+      <div class="ginfo">
+        <div class="gname">Candy Rush</div>
+        <div class="gtag">Tap challenge</div>
       </div>
     </div>
 
-    <div class="game" onclick="openGame('Puzzle Quest')">
-      <div class="game-art">🧩</div>
-      <div class="game-info">
-        <div class="game-name">Puzzle Quest</div>
-        <div class="game-tag">Play Demo</div>
+    <div class="game" onclick="openGame('star')">
+      <div class="art g5">🌟</div>
+      <div class="ginfo">
+        <div class="gname">Star Catch</div>
+        <div class="gtag">Tap challenge</div>
       </div>
     </div>
 
-    <div class="game" onclick="openGame('Star Catch')">
-      <div class="game-art">🌟</div>
-      <div class="game-info">
-        <div class="game-name">Star Catch</div>
-        <div class="game-tag">Play Demo</div>
+    <div class="game" onclick="openGame('candy')">
+      <div class="art g6">🧩</div>
+      <div class="ginfo">
+        <div class="gname">Puzzle Pop</div>
+        <div class="gtag">Demo challenge</div>
       </div>
     </div>
 
@@ -867,48 +651,69 @@ button{
 </section>
 
 
+<!-- PLAY -->
+
+<section id="play" class="page game-page"></section>
+
+
 <!-- REFERRAL -->
 
 <section id="referral" class="page">
 
-  <div class="section-title">
+  <div class="section">
     <h2>Invite Friends</h2>
     <span>Referral</span>
   </div>
 
-  <div class="ref-card">
+  <div class="ref">
 
     <h2>👥 Invite & Earn Demo Rewards</h2>
 
-    <p style="color:#9aa6c1;font-size:13px;margin-top:7px;line-height:1.5;">
-      Share your demo referral link with friends and test the referral interface.
+    <p style="color:#929fba;font-size:12px;margin-top:7px;line-height:1.5">
+      Share your referral link to test the demo referral flow.
     </p>
 
-    <div class="ref-code" id="refLink">
-      Loading...
-    </div>
+    <div class="refcode" id="refLink"></div>
 
-    <button class="primary" onclick="copyReferral()">
+    <button class="btn" onclick="copyRef()">
       Copy Referral Link
     </button>
 
-    <div class="stats">
-      <div class="stat">
-        <b id="refCount">0</b>
-        <span>Referrals</span>
+    <div style="
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:12px">
+
+      <div class="balance">
+
+        <div class="label">
+          Referrals
+        </div>
+
+        <div class="money"
+             style="font-size:22px"
+             id="refs">
+          0
+        </div>
+
       </div>
 
-      <div class="stat">
-        <b>$<span id="refReward">0.00</span></b>
-        <span>Demo Rewards</span>
+      <div class="balance">
+
+        <div class="label">
+          Demo Reward
+        </div>
+
+        <div class="money"
+             style="font-size:22px">
+          $<span id="refReward">0</span>
+        </div>
+
       </div>
+
     </div>
 
-  </div>
-
-  <div class="promo">
-    <h3>🔗 Your Referral Code</h3>
-    <p id="myCode">---</p>
   </div>
 
 </section>
@@ -918,36 +723,33 @@ button{
 
 <section id="wallet" class="page">
 
-  <div class="section-title">
+  <div class="section">
     <h2>Wallet</h2>
-    <span>Demo</span>
+    <span>Demo credits</span>
   </div>
 
-  <div class="balance-card">
+  <div class="balance">
 
-    <div class="balance-label">
+    <div class="label">
       Available Demo Balance
     </div>
 
-    <div class="balance">
-      $<span id="walletBalance">100.00</span>
+    <div class="money">
+      $<span id="wallet">100.00</span>
     </div>
 
-    <button class="primary" onclick="showNotice()">
-      Demo Wallet Info
-    </button>
-
   </div>
 
-  <div class="demo-notice">
-    💡 This wallet uses fictional demo credits only. No deposits or withdrawals are connected.
+  <div class="notice">
+    💡 No deposits or withdrawals are connected.
+    All credits are fictional.
   </div>
 
-  <div class="section-title">
-    <h2>Recent Activity</h2>
+  <div class="section">
+    <h2>Activity</h2>
   </div>
 
-  <div id="walletTransactions"></div>
+  <div id="txWallet"></div>
 
 </section>
 
@@ -956,55 +758,51 @@ button{
 
 <section id="profile" class="page">
 
-  <div class="profile-head">
+  <div style="text-align:center;padding:18px 0">
 
-    <div class="avatar" id="avatar">
+    <div
+      style="
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      margin:auto;
+      background:linear-gradient(135deg,#6944ef,#20b9ee);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      font-weight:900"
+      id="avatar">
       A
     </div>
 
-    <div class="profile-name" id="profileName">
+    <h2 style="margin-top:10px" id="pname">
       Guest
-    </div>
+    </h2>
 
-    <div class="profile-email" id="profileEmail">
-      Demo Account
+    <div
+      style="color:#8490aa;font-size:12px"
+      id="pemail">
+      Demo account
     </div>
 
   </div>
 
-  <div class="menu">
+  <button class="btn" onclick="show('referral')">
+    👥 Referral Center
+  </button>
 
-    <button class="menu-item" onclick="go('referral')">
-      👥
-      <span>Referral Center</span>
-      <span>›</span>
-    </button>
+  <button class="btn" onclick="show('wallet')">
+    💰 Demo Wallet
+  </button>
 
-    <button class="menu-item" onclick="go('wallet')">
-      💰
-      <span>Demo Wallet</span>
-      <span>›</span>
-    </button>
+  <button class="btn" onclick="showTransactions()">
+    📊 Transactions
+  </button>
 
-    <button class="menu-item" onclick="go('transactions')">
-      📊
-      <span>Transactions</span>
-      <span>›</span>
-    </button>
-
-    <button class="menu-item" onclick="showNotice()">
-      ⚙️
-      <span>Settings</span>
-      <span>›</span>
-    </button>
-
-    <button class="menu-item" onclick="logout()">
-      🚪
-      <span>Logout</span>
-      <span>›</span>
-    </button>
-
-  </div>
+  <button class="btn" onclick="logout()">
+    🚪 Logout
+  </button>
 
 </section>
 
@@ -1013,133 +811,66 @@ button{
 
 <section id="transactions" class="page">
 
-  <div class="section-title">
+  <div class="section">
     <h2>Transactions</h2>
     <span>Demo history</span>
   </div>
 
-  <div id="transactionsList"></div>
-
-</section>
-
-
-<!-- LOGIN -->
-
-<section id="login" class="page auth">
-
-  <div class="auth-logo">
-    READ<span>MITH</span>
-  </div>
-
-  <div class="auth-card">
-
-    <h1>Welcome Back</h1>
-
-    <p>
-      Login to your demo account.
-    </p>
-
-    <div class="field">
-      <label>Email</label>
-      <input id="loginEmail" type="email" placeholder="Enter email">
-    </div>
-
-    <div class="field">
-      <label>Password</label>
-      <input id="loginPassword" type="password" placeholder="Enter password">
-    </div>
-
-    <button class="primary" onclick="login()">
-      Login
-    </button>
-
-    <button class="secondary" onclick="go('register')">
-      Create Demo Account
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- REGISTER -->
-
-<section id="register" class="page auth">
-
-  <div class="auth-logo">
-    READ<span>MITH</span>
-  </div>
-
-  <div class="auth-card">
-
-    <h1>Create Account</h1>
-
-    <p>
-      Create your free demo account.
-    </p>
-
-    <div class="field">
-      <label>Name</label>
-      <input id="regName" type="text" placeholder="Your name">
-    </div>
-
-    <div class="field">
-      <label>Email</label>
-      <input id="regEmail" type="email" placeholder="Your email">
-    </div>
-
-    <div class="field">
-      <label>Password</label>
-      <input id="regPassword" type="password" placeholder="Create password">
-    </div>
-
-    <div class="field">
-      <label>Referral Code</label>
-      <input id="regReferral" type="text" placeholder="Optional referral code">
-    </div>
-
-    <button class="primary" onclick="register()">
-      Register
-    </button>
-
-    <button class="secondary" onclick="go('login')">
-      Already have an account?
-    </button>
-
-  </div>
+  <div id="txList"></div>
 
 </section>
 
 </div>
 
 
-<!-- BOTTOM NAV -->
+<!-- NAV -->
 
-<nav class="bottom-nav">
+<nav class="nav">
 
-  <button class="nav-item active" data-page="home" onclick="go('home')">
-    <div class="icon">🏠</div>
+  <button
+    data-page="home"
+    class="active"
+    onclick="show('home')">
+
+    <b>⌂</b>
     Home
+
   </button>
 
-  <button class="nav-item" data-page="games" onclick="go('games')">
-    <div class="icon">🎮</div>
+  <button
+    data-page="games"
+    onclick="show('games')">
+
+    <b>🎮</b>
     Games
+
   </button>
 
-  <button class="nav-item" data-page="referral" onclick="go('referral')">
-    <div class="icon">👥</div>
+  <button
+    data-page="referral"
+    onclick="show('referral')">
+
+    <b>👥</b>
     Invite
+
   </button>
 
-  <button class="nav-item" data-page="wallet" onclick="go('wallet')">
-    <div class="icon">💰</div>
+  <button
+    data-page="wallet"
+    onclick="show('wallet')">
+
+    <b>💰</b>
     Wallet
+
   </button>
 
-  <button class="nav-item" data-page="profile" onclick="go('profile')">
-    <div class="icon">👤</div>
+  <button
+    data-page="profile"
+    onclick="show('profile')">
+
+    <b>👤</b>
     Profile
+
   </button>
 
 </nav>
@@ -1149,20 +880,27 @@ button{
 
 <div class="modal" id="modal">
 
-  <div class="modal-box">
+  <div class="modalbox">
 
-    <button class="close" onclick="closeModal()">×</button>
+    <button class="close" onclick="closeModal()">
+      ×
+    </button>
 
-    <h2 id="modalTitle">
+    <h2 id="mtitle">
       Demo
     </h2>
 
-    <p id="modalText">
-      This is a demo feature.
+    <p
+      id="mtext"
+      style="
+      color:#93a0bb;
+      font-size:12px;
+      line-height:1.5;
+      margin-top:9px">
     </p>
 
-    <button class="primary" onclick="closeModal()">
-      Continue
+    <button class="btn" onclick="closeModal()">
+      OK
     </button>
 
   </div>
@@ -1170,536 +908,635 @@ button{
 </div>
 
 
-<div class="toast" id="toast">
-  Copied!
-</div>
+<div class="toast" id="toast"></div>
 
 
 <script>
 
-/* =========================
-   DATA
-========================= */
+const KEY="readmith_play_demo";
 
-const USERS_KEY = "readmith_demo_users";
-const CURRENT_KEY = "readmith_demo_current";
+let data=
+JSON.parse(localStorage.getItem(KEY)||"null")
+||
+{
+  balance:100,
+  refs:0,
+  refReward:0,
 
-let users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-
-let currentUser =
-  JSON.parse(localStorage.getItem(CURRENT_KEY) || "null");
-
-
-/* =========================
-   ROUTER
-========================= */
-
-function go(page){
-
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active");
-  });
-
-  const target=document.getElementById(page);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  document.querySelectorAll(".nav-item").forEach(item=>{
-    item.classList.remove("active");
-
-    if(item.dataset.page===page){
-      item.classList.add("active");
+  transactions:[
+    {
+      name:"Welcome Demo Credit",
+      amount:100,
+      date:new Date().toLocaleDateString()
     }
-  });
+  ]
+};
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-  updateUI();
-}
+let spinBusy=false;
+let starTaps=0;
+let candyCount=0;
 
 
-/* =========================
-   URL REFERRAL
-========================= */
-
-function getReferralFromURL(){
-
-  const hash=window.location.hash;
-
-  if(hash.includes("?")){
-
-    const query=hash.split("?")[1];
-
-    const params=new URLSearchParams(query);
-
-    return params.get("referCode") || "";
-  }
-
-  return "";
-}
-
-
-/* =========================
-   REGISTER
-========================= */
-
-function register(){
-
-  const name=document.getElementById("regName").value.trim();
-  const email=document.getElementById("regEmail").value.trim().toLowerCase();
-  const password=document.getElementById("regPassword").value;
-  const referral=document.getElementById("regReferral").value.trim();
-
-  if(!name || !email || !password){
-
-    showToast("Please fill all fields");
-    return;
-  }
-
-  if(users.some(u=>u.email===email)){
-
-    showToast("Account already exists");
-    return;
-  }
-
-  const code=
-    Math.floor(100000+Math.random()*900000).toString();
-
-  const user={
-    id:Date.now(),
-    name,
-    email,
-    password,
-    code,
-    balance:100,
-    referrals:0,
-    referralReward:0,
-    referredBy:referral || getReferralFromURL(),
-    transactions:[
-      {
-        name:"Welcome Demo Credit",
-        amount:100,
-        date:new Date().toLocaleDateString()
-      }
-    ]
-  };
-
-  /* referral */
-
-  if(user.referredBy){
-
-    const parent=users.find(
-      u=>u.code===user.referredBy
-    );
-
-    if(parent){
-
-      parent.referrals+=1;
-      parent.referralReward+=5;
-
-      parent.transactions.unshift({
-        name:"Referral Demo Reward",
-        amount:5,
-        date:new Date().toLocaleDateString()
-      });
-
-      parent.balance+=5;
-    }
-  }
-
-  users.push(user);
+function save(){
 
   localStorage.setItem(
-    USERS_KEY,
-    JSON.stringify(users)
+    KEY,
+    JSON.stringify(data)
   );
 
-  currentUser=user;
-
-  localStorage.setItem(
-    CURRENT_KEY,
-    JSON.stringify(currentUser)
-  );
-
-  showToast("Account created");
-
-  setTimeout(()=>{
-    go("home");
-  },500);
+  update();
 }
 
 
-/* =========================
-   LOGIN
-========================= */
+function update(){
 
-function login(){
+  document.getElementById("balance")
+    .textContent=data.balance.toFixed(2);
 
-  const email=document
-    .getElementById("loginEmail")
-    .value
-    .trim()
-    .toLowerCase();
+  document.getElementById("wallet")
+    .textContent=data.balance.toFixed(2);
 
-  const password=document
-    .getElementById("loginPassword")
-    .value;
+  document.getElementById("refs")
+    .textContent=data.refs;
 
-  const user=users.find(
-    u=>u.email===email && u.password===password
-  );
+  document.getElementById("refReward")
+    .textContent=data.refReward.toFixed(2);
 
-  if(!user){
-
-    showToast("Invalid demo login");
-    return;
-  }
-
-  currentUser=user;
-
-  localStorage.setItem(
-    CURRENT_KEY,
-    JSON.stringify(user)
-  );
-
-  showToast("Login successful");
-
-  setTimeout(()=>{
-    go("home");
-  },500);
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-function logout(){
-
-  currentUser=null;
-
-  localStorage.removeItem(CURRENT_KEY);
-
-  showToast("Logged out");
-
-  setTimeout(()=>{
-    go("login");
-  },400);
-}
-
-
-/* =========================
-   UPDATE UI
-========================= */
-
-function updateUI(){
-
-  if(!currentUser){
-
-    return;
-  }
-
-  document.getElementById("balance").textContent=
-    Number(currentUser.balance).toFixed(2);
-
-  document.getElementById("walletBalance").textContent=
-    Number(currentUser.balance).toFixed(2);
-
-  document.getElementById("profileName").textContent=
-    currentUser.name;
-
-  document.getElementById("profileEmail").textContent=
-    currentUser.email;
-
-  document.getElementById("avatar").textContent=
-    currentUser.name.charAt(0).toUpperCase();
-
-  document.getElementById("refCount").textContent=
-    currentUser.referrals;
-
-  document.getElementById("refReward").textContent=
-    Number(currentUser.referralReward).toFixed(2);
-
-  document.getElementById("myCode").textContent=
-    currentUser.code;
 
   const link=
     location.origin+
     location.pathname+
-    "#/register?referCode="+
-    currentUser.code+
-    "&inviteType=INVITE_ROULETTE";
+    "#/register?referCode=258282&inviteType=INVITE_ROULETTE";
 
-  document.getElementById("refLink").textContent=link;
+  document.getElementById("refLink")
+    .textContent=link;
 
-  renderTransactions();
+
+  renderTx();
 }
 
 
-/* =========================
-   TRANSACTIONS
-========================= */
+function show(id){
 
-function renderTransactions(){
+  document
+    .querySelectorAll(".page")
+    .forEach(x=>{
+      x.classList.remove("active");
+    });
 
-  const list=document.getElementById(
-    "transactionsList"
-  );
 
-  const walletList=document.getElementById(
-    "walletTransactions"
-  );
+  document
+    .getElementById(id)
+    .classList.add("active");
 
-  if(!currentUser) return;
 
-  const tx=currentUser.transactions || [];
+  document
+    .querySelectorAll(".nav button")
+    .forEach(x=>{
+      x.classList.toggle(
+        "active",
+        x.dataset.page===id
+      );
+    });
 
-  let html="";
 
-  if(tx.length===0){
+  window.scrollTo(0,0);
 
-    html=
-      "<div class='demo-notice'>No demo transactions yet.</div>";
+  update();
+}
 
-  }else{
 
-    tx.forEach(item=>{
+function renderTx(){
 
-      html+=`
+  let html=
+    data.transactions
+    .map(t=>`
 
-        <div class="transaction">
+      <div class="tx">
 
-          <div class="transaction-left">
+        <div>
+          🎁 ${safe(t.name)}
 
-            <div class="tx-icon">
-              🎁
-            </div>
-
-            <div>
-              <div class="tx-name">
-                ${escapeHTML(item.name)}
-              </div>
-
-              <div class="tx-date">
-                ${escapeHTML(item.date)}
-              </div>
-            </div>
-
-          </div>
-
-          <div class="tx-amount">
-            +$${Number(item.amount).toFixed(2)}
-          </div>
-
+          <small>
+            ${safe(t.date)}
+          </small>
         </div>
 
-      `;
-    });
+        <div class="plus">
+          +$${Number(t.amount).toFixed(2)}
+        </div>
+
+      </div>
+
+    `)
+    .join("");
+
+
+  if(!html){
+    html=
+      "<div class='notice'>No transactions yet.</div>";
   }
 
-  list.innerHTML=html;
-  walletList.innerHTML=html;
+
+  document.getElementById("txList")
+    .innerHTML=html;
+
+  document.getElementById("txWallet")
+    .innerHTML=html;
 }
 
 
-/* =========================
-   BONUS
-========================= */
+function addReward(amount,name){
 
-function claimBonus(){
+  data.balance+=amount;
 
-  if(!currentUser){
+  data.transactions.unshift({
 
-    go("login");
-    return;
-  }
+    name:name,
 
-  currentUser.balance+=2;
-
-  currentUser.transactions.unshift({
-
-    name:"Daily Demo Bonus",
-
-    amount:2,
+    amount:amount,
 
     date:new Date().toLocaleDateString()
 
   });
 
-  saveCurrentUser();
+  save();
 
-  showToast("$2 demo bonus added");
-}
-
-
-/* =========================
-   GAME
-========================= */
-
-function openGame(name){
-
-  showModal(
-    name,
-    "This is a fictional demo game interface. No real-money wagering, deposits or withdrawals are available."
+  toast(
+    "Demo reward +$"+
+    amount.toFixed(2)
   );
 }
 
 
-/* =========================
-   NOTICE
-========================= */
+function claimBonus(){
 
-function showNotice(){
-
-  showModal(
-    "Demo Feature",
-    "This feature is part of the visual demo. Real-money payments and gambling functionality are not connected."
+  addReward(
+    2,
+    "Daily Demo Bonus"
   );
 }
 
 
-/* =========================
-   MODAL
-========================= */
+function openGame(type){
 
-function showModal(title,text){
+  show("play");
 
-  document.getElementById("modalTitle")
+  const p=
+    document.getElementById("play");
+
+
+  if(type==="wheel"){
+    wheelGame(p);
+  }
+
+  if(type==="chest"){
+    chestGame(p);
+  }
+
+  if(type==="star"){
+    starGame(p);
+  }
+
+  if(type==="candy"){
+    candyGame(p);
+  }
+}
+
+
+function wheelGame(p){
+
+  p.innerHTML=`
+
+    <h1>Lucky Wheel</h1>
+
+    <div class="sub">
+      Spin for a fictional demo reward
+    </div>
+
+    <div class="gamebox">
+
+      <div class="pointer"></div>
+
+      <div
+        class="wheel"
+        id="wheel">
+      </div>
+
+      <button
+        class="btn gold"
+        id="spin"
+        onclick="spin()">
+
+        SPIN
+
+      </button>
+
+      <div
+        class="result"
+        id="result">
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+function spin(){
+
+  if(spinBusy){
+    return;
+  }
+
+  spinBusy=true;
+
+  const w=
+    document.getElementById("wheel");
+
+  const r=
+    document.getElementById("result");
+
+
+  const reward=
+    [1,2,3,5,8,10]
+    [Math.floor(Math.random()*6)];
+
+
+  w.style.transform=
+    `rotate(${1440+
+    Math.floor(Math.random()*360)}deg)`;
+
+
+  setTimeout(()=>{
+
+    r.textContent=
+      "You received $"+
+      reward.toFixed(2)+
+      " demo credits!";
+
+
+    addReward(
+      reward,
+      "Lucky Wheel Demo"
+    );
+
+
+    spinBusy=false;
+
+  },3050);
+}
+
+
+function chestGame(p){
+
+  p.innerHTML=`
+
+    <h1>Treasure Box</h1>
+
+    <div class="sub">
+      Choose one fictional demo box
+    </div>
+
+    <div class="gamebox">
+
+      <div class="chests">
+
+        ${[1,2,3].map(i=>`
+
+          <button
+            class="chest"
+            onclick="openChest(this)">
+
+            🎁
+
+            <small>
+              BOX ${i}
+            </small>
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+      <div
+        class="result"
+        id="result">
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+function openChest(btn){
+
+  if(btn.classList.contains("open")){
+    return;
+  }
+
+
+  document
+    .querySelectorAll(".chest")
+    .forEach(x=>{
+      x.disabled=true;
+    });
+
+
+  btn.classList.add("open");
+
+  btn.innerHTML=
+    "💎<small>OPENED</small>";
+
+
+  const reward=
+    [1,3,5]
+    [Math.floor(Math.random()*3)];
+
+
+  document.getElementById("result")
+    .textContent=
+    "Treasure found: $"+
+    reward.toFixed(2)+
+    " demo credits!";
+
+
+  addReward(
+    reward,
+    "Treasure Box Demo"
+  );
+}
+
+
+function starGame(p){
+
+  starTaps=0;
+
+
+  p.innerHTML=`
+
+    <h1>Star Tap</h1>
+
+    <div class="sub">
+      Tap the star 10 times
+    </div>
+
+    <div class="gamebox">
+
+      <div class="tap-area">
+
+        <button
+          class="star"
+          onclick="tapStar()">
+
+          ⭐
+
+        </button>
+
+      </div>
+
+      <div
+        class="result"
+        id="result">
+
+        0 / 10
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+function tapStar(){
+
+  starTaps++;
+
+
+  document.getElementById("result")
+    .textContent=
+    starTaps+" / 10";
+
+
+  if(starTaps>=10){
+
+    addReward(
+      5,
+      "Star Tap Demo"
+    );
+
+
+    document.getElementById("result")
+      .textContent=
+      "Challenge complete! +$5.00 demo credits";
+  }
+}
+
+
+function candyGame(p){
+
+  candyCount=0;
+
+
+  const emojis=[
+    "🍬",
+    "🍭",
+    "🍫",
+    "🍩",
+    "🍪",
+    "🧁",
+    "🍬",
+    "🍭"
+  ];
+
+
+  p.innerHTML=`
+
+    <h1>Candy Rush</h1>
+
+    <div class="sub">
+      Collect all 8 candies
+    </div>
+
+    <div class="gamebox">
+
+      <div class="candy-grid">
+
+        ${emojis.map(e=>`
+
+          <button
+            class="candy"
+            onclick="eatCandy(this)">
+
+            ${e}
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+      <div
+        class="result"
+        id="result">
+
+        0 / 8
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+function eatCandy(b){
+
+  if(b.classList.contains("done")){
+    return;
+  }
+
+
+  b.classList.add("done");
+
+  b.disabled=true;
+
+  candyCount++;
+
+
+  document.getElementById("result")
+    .textContent=
+    candyCount+" / 8";
+
+
+  if(candyCount===8){
+
+    addReward(
+      4,
+      "Candy Rush Demo"
+    );
+
+
+    document.getElementById("result")
+      .textContent=
+      "All candies collected! +$4.00 demo credits";
+  }
+}
+
+
+function copyRef(){
+
+  const text=
+    document.getElementById("refLink")
+    .textContent;
+
+
+  if(navigator.clipboard){
+
+    navigator.clipboard
+      .writeText(text)
+      .then(()=>{
+        toast("Referral link copied");
+      });
+
+  }else{
+
+    toast("Copy not supported");
+
+  }
+}
+
+
+function showTransactions(){
+
+  show("transactions");
+
+}
+
+
+function logout(){
+
+  data.balance=100;
+
+  toast("Demo session reset");
+
+  setTimeout(()=>{
+    show("home");
+  },500);
+
+}
+
+
+function showInfo(){
+
+  modal(
+    "Demo Website",
+
+    "This is an interactive visual/gameplay prototype. All rewards are fictional demo credits. There are no real-money deposits, withdrawals or wagering features."
+  );
+
+}
+
+
+function modal(title,text){
+
+  document.getElementById("mtitle")
     .textContent=title;
 
-  document.getElementById("modalText")
+  document.getElementById("mtext")
     .textContent=text;
 
   document.getElementById("modal")
     .classList.add("show");
 }
 
+
 function closeModal(){
 
   document.getElementById("modal")
     .classList.remove("show");
+
 }
 
 
-/* =========================
-   COPY REFERRAL
-========================= */
+function toast(text){
 
-async function copyReferral(){
-
-  if(!currentUser) return;
-
-  const link=
-    location.origin+
-    location.pathname+
-    "#/register?referCode="+
-    currentUser.code+
-    "&inviteType=INVITE_ROULETTE";
-
-  try{
-
-    await navigator.clipboard.writeText(link);
-
-    showToast("Referral link copied");
-
-  }catch(e){
-
-    showToast("Copy not supported");
-  }
-}
-
-
-/* =========================
-   SAVE
-========================= */
-
-function saveCurrentUser(){
-
-  const index=users.findIndex(
-    u=>u.id===currentUser.id
-  );
-
-  if(index!==-1){
-
-    users[index]=currentUser;
-
-    localStorage.setItem(
-      USERS_KEY,
-      JSON.stringify(users)
-    );
-  }
-
-  localStorage.setItem(
-    CURRENT_KEY,
-    JSON.stringify(currentUser)
-  );
-
-  updateUI();
-}
-
-
-/* =========================
-   TOAST
-========================= */
-
-function showToast(message){
-
-  const toast=
+  const x=
     document.getElementById("toast");
 
-  toast.textContent=message;
+  x.textContent=text;
 
-  toast.classList.add("show");
+  x.classList.add("show");
 
   setTimeout(()=>{
-    toast.classList.remove("show");
+    x.classList.remove("show");
   },1800);
+
 }
 
 
-/* =========================
-   SECURITY DISPLAY
-========================= */
+function safe(s){
 
-function escapeHTML(value){
+  return String(s)
+    .replace(/[&<>"']/g,m=>({
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+
+    }[m]));
+
 }
 
 
-/* =========================
-   STARTUP
-========================= */
-
-const urlReferral=getReferralFromURL();
-
-if(urlReferral){
-
-  document.getElementById("regReferral")
-    .value=urlReferral;
-
-  go("register");
-
-}else if(currentUser){
-
-  go("home");
-
-}else{
-
-  go("home");
-}
+update();
 
 </script>
 
 </body>
-      </html>
+</html>
